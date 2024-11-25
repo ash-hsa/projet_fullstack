@@ -12,10 +12,10 @@ export class VaccinationService {
   constructor(private http: HttpClient) { }
 
   getAllVaccinationCenter() : Observable<VaccinationCenter[]>{
-    return this.http.get<VaccinationCenter[]>("/api/public/centers");
+    return this.http.get<VaccinationCenter[]>("api/public/centers");
   }
 
   getCenterById(id: Number) : Observable<VaccinationCenter>{
-    return this.http.get<VaccinationCenter>("/api/public/center/"+id);
+    return this.http.get<VaccinationCenter>("api/public/center/"+id);
   }
 }

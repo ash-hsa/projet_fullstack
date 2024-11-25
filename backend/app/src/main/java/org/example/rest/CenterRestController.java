@@ -24,7 +24,7 @@ public class CenterRestController {
     @Autowired
     private CenterService service;
 
-    @GetMapping(path = "/public/centers")
+    @GetMapping(path = "/api/public/centers")
     public List<Center> findAll(
         @RequestParam(name = "name", required = false)String filterByName){
         return service.findAll(filterByName);
@@ -32,18 +32,18 @@ public class CenterRestController {
 
 
     
-    @GetMapping(path = "/public/center/{id2}")
+    @GetMapping(path = "/api/public/center/{id2}")
     public Center findAll(@PathVariable("id2") Integer id) throws CenterNotFoundException{
         return service.findOne(id);
     }
 
-    @PostMapping(path = "/admin/centers")
+    @PostMapping(path = "/api/admin/centers")
     public ResponseEntity<Center> create(@RequestBody Center c) throws URISyntaxException{
         service.create(c);
         return ResponseEntity.created(new URI("center/"+c.getId())).build();
     }
 
-    @DeleteMapping(path = "/admin/center/{id}")
+    @DeleteMapping(path = "/api/admin/center/{id}")
     public void delete(@PathVariable("id") Integer id){
         service.removeOne(id);
     }

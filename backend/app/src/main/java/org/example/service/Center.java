@@ -26,6 +26,8 @@ public class Center {
     @JoinColumn(foreignKey = @ForeignKey(name = "address_fk"))
     private Address address;
 
+    public Center( ){}
+
     public Integer getId() {
         return id;
     }

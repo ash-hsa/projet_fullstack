@@ -25,24 +25,24 @@ public class UserRestController {
     @Autowired
     private UserService service;
 
-    @GetMapping(path = "/admin/users")
+    @GetMapping(path = "/api/admin/users")
     public List<User> findAll(@RequestParam(name = "name", required = false)String filterByName){
         return service.findAll(filterByName);
     }
 
     
-    @GetMapping(path = "/admin/user/{id2}")
+    @GetMapping(path = "/api/admin/user/{id2}")
     public User findAll(@PathVariable("id2") Integer id) throws UserNotFoundException{
         return service.findOne(id);
     }
 
-    @PostMapping(path = "/admin/users")
+    @PostMapping(path = "/api/admin/users")
     public ResponseEntity<User> create(@RequestBody User p) throws URISyntaxException{
         service.create(p);
         return ResponseEntity.created(new URI("user/"+p.getId())).build();
     }
 
-    @DeleteMapping(path = "/admin/user/{id}")
+    @DeleteMapping(path = "/api/admin/user/{id}")
     public void delete(@PathVariable("id") Integer id){
         service.removeOne(id);
     }

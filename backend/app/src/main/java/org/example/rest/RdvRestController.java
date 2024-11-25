@@ -27,25 +27,25 @@ public class RdvRestController {
     @Autowired
     private RdvService service;
 
-    @GetMapping(path = "/public/timeslots")
+    @GetMapping(path = "/api/public/timeslots")
     public List<Rdv> findAll(
             @RequestParam(name = "date", required = false)Date date){
         System.out.println(service.findAll(date));
         return service.findAll(date);
     }
 
-    @GetMapping(path = "/public/timeslots/{id}")
+    @GetMapping(path = "/api/public/timeslots/{id}")
     public Rdv findAll(@PathVariable("id") Integer id) throws RdvNotFoundException{
         return service.findOne(id);
     }
 
-    @PostMapping(path = "/public/timeslots")
+    @PostMapping(path = "/api/public/timeslots")
     public ResponseEntity<Patient> create(@RequestBody Rdv r) throws URISyntaxException{
         service.create(r);
         return ResponseEntity.created(new URI("/public/timeslots/"+r.getId())).build();
     }
 
-    @DeleteMapping(path = "/public/timeslots/{id}")
+    @DeleteMapping(path = "/api/public/timeslots/{id}")
     public void delete(@PathVariable("id") Integer id){
         service.removeOne(id);
     }

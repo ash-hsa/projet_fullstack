@@ -27,7 +27,6 @@ export class VaccinationCenterListComponent {
     this.service.getAllVaccinationCenter().subscribe(resultCenters=>{
       this.centers=resultCenters;
     });
-    console.log("aaaa");
   }
 
   onDelete(center:VaccinationCenter){

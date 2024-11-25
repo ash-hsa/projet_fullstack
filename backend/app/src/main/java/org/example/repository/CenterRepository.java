@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface CenterRepository extends JpaRepository<Center, Integer> {
 
 
-    public List<Center> findByName(String name);
+    public List<Center> findByNameLikeIgnoringCase(String name);
     public List<Center> findById(int id);
 }

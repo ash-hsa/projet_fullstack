@@ -6,7 +6,7 @@ import { VaccinationCenterListComponent } from "./vaccination-center-list/vaccin
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, VaccinationCenterComponent, VaccinationCenterListComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

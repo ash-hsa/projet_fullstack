@@ -15,7 +15,10 @@ public class CenterService {
     
 
     public List<Center> findAll(String name){
-        return centerRepository.findByName(name);
+        if(name==null){
+            name="";
+        }
+        return centerRepository.findByNameLikeIgnoringCase("%"+name+"%");
     }
 
     public Center findOne(Integer id) throws CenterNotFoundException{

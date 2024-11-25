@@ -1,0 +1,14 @@
+<div *ngIf="center">
+    <div>
+        <h2 [title]="center.name">{{center.name | uppercase}}</h2>
+        <div>{{center.address}}
+            <span>{{center.postalCode}} {{center.city}}</span><br>
+            Ouvert depuis le {{center.openingDate | date:'dd/MM/Y'}}
+
+        </div>
+    
+        <input id="name" [(ngModel)]="center.name"/>
+        <button (click)="delete()">Supprimer</button>
+    </div>
+</div>
+

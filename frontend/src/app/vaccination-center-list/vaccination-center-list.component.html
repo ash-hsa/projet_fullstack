@@ -1,0 +1,12 @@
+<h1>Vaccination list</h1>
+
+<ul>
+    <li *ngFor="let aCenter of centers">
+        <button 
+            routerLink="/centers/detail/{{aCenter.id}}">{{aCenter.name}}</button>
+    </li>
+</ul>
+
+<div *ngIf="selectedCenter">
+    <app-vaccination-center (deleted)="onDelete($event)"></app-vaccination-center>
+</div>

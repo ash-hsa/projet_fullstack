@@ -1,0 +1,60 @@
+GET http://localhost:8080/patients?name=Jean
+
+###
+
+GET http://localhost:8080/patient/3
+
+###
+
+DELETE http://localhost:8080/patient/3
+
+###
+
+POST http://localhost:8080/patients
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Jean",
+  "birthDate": "2020-10-07T00:00:01.084+00:00"
+}
+
+###
+
+POST http://localhost:8080/patients
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "John",
+  "birthDate": "2019-10-07T00:00:01.084+00:00"
+}
+
+###
+POST http://localhost:8080/admin/users
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John"
+}
+
+
+###
+
+GET http://localhost:8080/admin/users?name="John"
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/public/centers
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/admin/centers
+Content-Type: : application/application/json
+{
+  "id": 1,
+  "name": "Centre de Mont Cu"
+}

@@ -28,7 +28,7 @@ public class Address {
     }
 
     public String getStreet() {
-        return "bite";
+        return this.street;
     }
 
     public void setStreet(String street) {

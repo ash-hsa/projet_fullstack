@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.assertj.core.api.Assertions;
+import org.example.exception.CenterNotFoundException;
 import org.example.repository.CenterRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CenterServiceTest {
 
@@ -18,23 +20,10 @@ public class CenterServiceTest {
     CenterRepository centerrepository;
 
     // @Test
-    // public void itshouldgiveID(){
+    // public void name(){
     //     //Given
-    //     centre.setId(0);
     //     //When
-    //     int id = centre.getId();
     //     //Then
-    //     Assertions.assertThat(id).isEqualTo(0);
-    // }
-
-    // @Test
-    // public void itshouldgiveName(){
-    //     //Given
-    //     centre.setName("Polytech");
-    //     //When
-    //     String name = centre.getName();
-    //     //Then
-    //     Assertions.assertThat(name).isEqualTo("Polytech");
     // }
 
     @BeforeEach
@@ -46,7 +35,7 @@ public class CenterServiceTest {
 
 
     @Test
-    public void NotEmptyAllCentre(){
+    public void notEmptyAllCentre(){
         //Given
         Center wrongcenter1 = new Center();
         Center wrongcenter2 = new Center();
@@ -57,6 +46,7 @@ public class CenterServiceTest {
         wrongcenter2.setName("Fac");
         rightcenter2.setName("Hopital de Nancy");
         rightcenter1.setName("Hopital de Bel air");
+
         Mockito.doReturn(List.of(rightcenter1, rightcenter2)).when(centerrepository).findByNameLikeIgnoringCase("%HoPiTale%");
 
         //When
@@ -66,7 +56,7 @@ public class CenterServiceTest {
     }
 
     @Test
-    public void ShouldFindCentres(){
+    public void shouldFindAllCentres(){
         //Given
         Center wrongcenter1 = new Center();
         Center wrongcenter2 = new Center();
@@ -77,6 +67,7 @@ public class CenterServiceTest {
         wrongcenter2.setName("Fac");
         rightcenter2.setName("Hopital de Nancy");
         rightcenter1.setName("Hopital de Bel air");
+
         Mockito.doReturn(List.of(rightcenter1, rightcenter2)).when(centerrepository).findByNameLikeIgnoringCase("%HoPiTale%");
 
         //When
@@ -86,7 +77,7 @@ public class CenterServiceTest {
     }
 
     @Test
-    public void ShouldFindCentresInOrdre(){
+    public void shouldFindAllCentresInOrdre(){
         //Given
         Center wrongcenter1 = new Center();
         Center wrongcenter2 = new Center();
@@ -97,6 +88,7 @@ public class CenterServiceTest {
         wrongcenter2.setName("Fac");
         rightcenter2.setName("Hopital de Nancy");
         rightcenter1.setName("Hopital de Bel air");
+
         Mockito.doReturn(List.of(rightcenter1, rightcenter2)).when(centerrepository).findByNameLikeIgnoringCase("%HoPiTale%");
 
         //When
@@ -105,6 +97,43 @@ public class CenterServiceTest {
         Assertions.assertThat(result).containsExactlyInAnyOrder(rightcenter1, rightcenter2);
     }
 
+     @Test
+     public void shouldfindOneCenter() throws CenterNotFoundException {
+         //Given
+         Center wrongcenter1 = new Center();
+         Center wrongcenter2 = new Center();
+         Center rightcenter1 = new Center();
+
+         wrongcenter1.setId(123);
+         wrongcenter2.setId(80);
+         rightcenter1.setId(42);
+
+         Mockito.doReturn(Optional.of(rightcenter1)).when(centerrepository).findById(42);
+
+         //When
+         Center result = centerservice.findOne(42);
+         //Then
+         Assertions.assertThat(result).isNotNull();
+     }
+
+    @Test
+    public void shouldfindOneCorrectCenter()throws CenterNotFoundException{
+        //Given
+        Center wrongcenter1 = new Center();
+        Center wrongcenter2 = new Center();
+        Center rightcenter1 = new Center();
+
+        wrongcenter1.setId(123);
+        wrongcenter2.setId(80);
+        rightcenter1.setId(42);
+
+        Mockito.doReturn(Optional.of(rightcenter1)).when(centerrepository).findById(42);
+
+        //When
+        Center result = centerservice.findOne(42);
+        //Then
+        Assertions.assertThat(result.getId()).isEqualTo(42);
+    }
     
 
 

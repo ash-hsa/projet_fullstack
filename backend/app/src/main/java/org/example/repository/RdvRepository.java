@@ -11,6 +11,4 @@ import org.springframework.stereotype.Repository;
 public interface RdvRepository extends JpaRepository<Rdv, Integer> {
 
     public List<Rdv> findByDate(Date date);
-    public List<Rdv> findById(int id);
-
 }

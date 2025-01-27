@@ -12,7 +12,10 @@ public class CenterService {
     
     @Autowired
     private CenterRepository centerRepository;
-    
+
+    public CenterService(final CenterRepository centerrepository){
+        this.centerRepository = centerrepository;
+    }
 
     public List<Center> findAll(String name){
         if(name==null){

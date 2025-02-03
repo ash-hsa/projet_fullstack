@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.example.exception.RdvNotFoundException;
+import org.example.repository.PatientRepository;
 import org.example.repository.RdvRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,10 @@ public class RdvService {
     
     @Autowired
     private RdvRepository rdvRepository;
-    
+
+    public RdvService(final RdvRepository rdvrepository){
+        this.rdvRepository = rdvrepository;
+    }
 
     public List<Rdv> findAll(Date date){
         return rdvRepository.findByDate(date);

@@ -3,7 +3,7 @@ import { VaccinationCenter } from '../vaccination-center';
 import { FormsModule } from '@angular/forms';
 import { DatePipe, NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { VaccinationService } from '../vaccination.service';
+import { VaccinationService } from '../service/vaccination.service';
 
 @Component({
   selector: 'app-vaccination-center',

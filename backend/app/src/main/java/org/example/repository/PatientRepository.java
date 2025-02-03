@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
-    public List<Patient> findByName(String name);
-    public List<Patient> findById(int id);
+    public List<Patient> findByNameLikeIgnoringCase(String name);
 
 }

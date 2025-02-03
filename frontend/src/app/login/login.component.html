@@ -6,9 +6,10 @@
     <div class="champs">
         <input id="pseudo" type="text" placeholder="Login" [(ngModel)]="user.pseudo"><br>
         <input id="password" type="password" placeholder="password" [(ngModel)]="user.password"><br>
-        <button>Se connecter</button>
+        <button (click)="connect()">Se connecter</button>
+        <button mat-raised-button color="primary">Se connecter</button>
+
     </div>
-    
     
 </div>
 

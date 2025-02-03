@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.rest.CenterRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-03T07:15:32" hostname="LAPTOP-R0E5QCNJ" time="0.052">
+<testsuite name="org.example.rest.CenterRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-03T09:18:37" hostname="daniel-Swift-SF314-41" time="0.024">
   <properties/>
-  <testcase name="ItShouldTestfind()" classname="org.example.rest.CenterRestTest" time="0.052"/>
+  <testcase name="ItShouldTestfind()" classname="org.example.rest.CenterRestTest" time="0.024"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

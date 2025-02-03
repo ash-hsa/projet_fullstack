@@ -14,6 +14,7 @@ public class User {
     @Id
     private Integer id;
     private String name;
+    private String password;
     private boolean is_s_admin;
     private boolean is_doctor;
 
@@ -24,11 +25,12 @@ public class User {
 
     public User(){}
 
-    public User(Integer id, String name, boolean is_s_admin, boolean is_doctor) {
+    public User(Integer id, String name, boolean is_s_admin, boolean is_doctor,String password) {
         this.id = id;
         this.name = name;
         this.is_doctor = is_doctor;
         this.is_s_admin = is_s_admin;
+        this.password=password;
     }
 
     public Integer getId() {
@@ -42,6 +44,14 @@ public class User {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPassword(String password){
+        this.password=password;
+    }
+
+    public String getPassword(){
+        return this.password;
     }
 
     

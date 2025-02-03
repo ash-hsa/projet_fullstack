@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { VaccinationCenter } from '../vaccination-center';
 import { DatePipe, NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { VaccinationCenterComponent } from "../vaccination-center/vaccination-center.component";
-import { VaccinationService } from '../vaccination.service';
+import { VaccinationService } from '../service/vaccination.service';
 import { RouterLink } from '@angular/router';
 
 @Component({

@@ -31,6 +31,14 @@ export class LoginService {
   }
 
 
+  getBasicAuthHeaderValue(): string {
+    return this.createToken(this.username, this.password)
+  }
+
+  authHasBasic(): boolean {
+    return !!this.password && !!this.username;
+  }
+
   private createToken(username?: string, password?: string) {
     let token = `Basic ` + btoa(`${username}:${password}`);
     return token;

@@ -4,10 +4,24 @@
 
 <div class="global">
     <div class="champs">
-        <input id="pseudo" type="text" placeholder="Login" [(ngModel)]="user.pseudo"><br>
+        <!-- <input id="pseudo" type="text" placeholder="Login" [(ngModel)]="user.pseudo"><br>
         <input id="password" type="password" placeholder="password" [(ngModel)]="user.password"><br>
-        <button (click)="connect()">Se connecter</button>
-        <button mat-raised-button color="primary">Se connecter</button>
+        <button mat-raised-button variant="contained" color="primary" (click)="connect()">Se connecter</button> -->
+
+        <form (submit)="connect()">
+
+            <mat-form-field appearance="fill" class="custom-field ">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput [(ngModel)]="user.pseudo" name="username" required>
+            </mat-form-field><br>
+          
+            <mat-form-field appearance="fill" class="custom-field ">
+              <mat-label>Mot de passe</mat-label>
+              <input matInput [(ngModel)]="user.password" name="password" type="password" required>
+            </mat-form-field><br>
+          
+            <button mat-raised-button color="primary" type="submit" class="custom-button">Se connecter</button>
+        </form>
 
     </div>
     

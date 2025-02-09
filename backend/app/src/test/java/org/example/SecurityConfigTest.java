@@ -1,5 +1,5 @@
 
-package org.example.configuration;
+package org.example;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,31 +23,32 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class SecurityConfigTest {
     
     
-    // @Autowired
-    // MockMvc mockMvc;
-    // @Autowired
-    // UserRepository repository;
-    // @Autowired
-    // PasswordEncoder passwordEncoder;
-    // @Test
+    @Autowired
+    MockMvc mockMvc;
+    @Autowired
+    UserRepository repository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    @Test
     
-    // public void itShouldAllowUser()
-    //         throws Exception {
-    //     //Given
-    //     User utilisateur = new User();
-    //     utilisateur.setName("toto");
-    //     utilisateur.setPassword(passwordEncoder.encode("tata"));
-    //     utilisateur.setId(0);
-    //     repository.save(utilisateur);
-    //     //when
-    //     mockMvc.perform(MockMvcRequestBuilders.get("/centres")
-    //                     .contentType(MediaType.APPLICATION_JSON)
-    //                     // toto:tata
-    //                     .header("Authorization","Basic dG90bzp0YXRh"))
-    //             .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
+    public void itShouldAllowUser()
+            throws Exception {
+        //Given
+        User utilisateur = new User();
+        utilisateur.setName("toto");
+        utilisateur.setPassword(passwordEncoder.encode("tata"));
+        utilisateur.setId(0);
+        repository.save(utilisateur);
+        System.out.println(repository.findAll());
+        //when
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/public/centers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        // toto:tata
+                        .header("Authorization","Basic dG90bzp0YXRh"))
+                .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
         
-    //     //then
-    // }
+        //then
+    }
     
     
 }

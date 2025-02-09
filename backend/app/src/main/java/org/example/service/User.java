@@ -1,5 +1,6 @@
 package org.example.service;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
@@ -13,9 +14,17 @@ public class User {
 
     @Id
     private Integer id;
+
+    @Column(nullable = false)
     private String name;
+
+
     private boolean is_s_admin;
+
+
     private boolean is_doctor;
+
+    @Column(nullable = false)
     private String password;
 
 
@@ -23,6 +32,8 @@ public class User {
     @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name="address_docteur_fk"))
     private Address workAt;
 
+
+    
     public User(){}
 
     public User(Integer id, String name, boolean is_s_admin, boolean is_doctor) {
@@ -47,6 +58,10 @@ public class User {
 
     public void setPassword(String password){
         this.password=password;
+    }
+
+    public String getPassword(){
+        return this.password;
     }
     
 

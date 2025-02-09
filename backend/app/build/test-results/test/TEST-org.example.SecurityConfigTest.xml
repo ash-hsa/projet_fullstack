@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.SecurityConfigTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-09T21:53:05" hostname="daniel-Swift-SF314-41" time="1.171">
+  <properties/>
+  <testcase name="itShouldAllowUser()" classname="org.example.SecurityConfigTest" time="1.171"/>
+  <system-out><![CDATA[22:52:56.646 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.SecurityConfigTest]: SecurityConfigTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:52:56.890 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.App for test class org.example.SecurityConfigTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2025-02-09T22:52:57.664+01:00  INFO 19463 --- [    Test worker] org.example.SecurityConfigTest           : Starting SecurityConfigTest using Java 17.0.14 with PID 19463 (started by daniel in /home/daniel/Cours/5A/projet_fullstack/backend/app)
+2025-02-09T22:52:57.668+01:00  INFO 19463 --- [    Test worker] org.example.SecurityConfigTest           : No active profile set, falling back to 1 default profile: "default"
+2025-02-09T22:52:58.966+01:00  INFO 19463 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-09T22:52:59.083+01:00  INFO 19463 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 4 JPA repository interfaces.
+2025-02-09T22:53:00.032+01:00  INFO 19463 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-09T22:53:00.140+01:00  INFO 19463 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-02-09T22:53:00.215+01:00  INFO 19463 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-09T22:53:00.731+01:00  INFO 19463 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-09T22:53:00.778+01:00  INFO 19463 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-09T22:53:01.312+01:00  INFO 19463 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4aeaff64
+2025-02-09T22:53:01.314+01:00  INFO 19463 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-09T22:53:01.363+01:00  WARN 19463 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-09T22:53:03.161+01:00  INFO 19463 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-09T22:53:03.165+01:00  INFO 19463 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-09T22:53:04.124+01:00  WARN 19463 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-09T22:53:04.735+01:00  INFO 19463 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4884350b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53cba89f, org.springframework.security.web.context.SecurityContextHolderFilter@597eb9ac, org.springframework.security.web.header.HeaderWriterFilter@7d48299e, org.springframework.web.filter.CorsFilter@66ad7167, org.springframework.security.web.authentication.logout.LogoutFilter@627ad446, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2c56e044, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a90f33d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c7b27c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14aa2123, org.springframework.security.web.access.ExceptionTranslationFilter@5e781b4f, org.springframework.security.web.access.intercept.AuthorizationFilter@d082916]
+2025-02-09T22:53:05.349+01:00  INFO 19463 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-02-09T22:53:05.349+01:00  INFO 19463 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-09T22:53:05.352+01:00  INFO 19463 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-02-09T22:53:05.398+01:00  INFO 19463 --- [    Test worker] org.example.SecurityConfigTest           : Started SecurityConfigTest in 8.251 seconds (process running for 10.265)
+Hibernate: select u1_0.id,u1_0.is_doctor,u1_0.is_s_admin,u1_0.name,u1_0.password,wa1_0.id,wa1_0.city,wa1_0.rue from utilisateur u1_0 left join address wa1_0 on wa1_0.id=u1_0.address_id where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.is_doctor,u1_0.is_s_admin,u1_0.name,u1_0.password,u1_0.address_id from utilisateur u1_0
+[org.example.service.User@4973dacf, org.example.service.User@5cb42eb2]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

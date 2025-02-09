@@ -16,6 +16,7 @@ public class User {
     private String name;
     private boolean is_s_admin;
     private boolean is_doctor;
+    private String password;
 
 
     @OneToOne
@@ -44,6 +45,9 @@ public class User {
         this.name = name;
     }
 
+    public void setPassword(String password){
+        this.password=password;
+    }
     
 
 }

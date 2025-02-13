@@ -1,0 +1,33 @@
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-field {
+    width: 50%;
+  }
+  
+  .results-container {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  
+  mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .no-results {
+    text-align: center;
+    color: red;
+  }
+  

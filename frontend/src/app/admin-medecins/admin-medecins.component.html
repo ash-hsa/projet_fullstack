@@ -1,13 +1,10 @@
 <h2 class="title">Gestion des médecins</h2>
 
-<!-- Formulaire d'ajout de médecin -->
-<div class="form-container">
-  <mat-form-field appearance="fill" class="input-field">
-    <mat-label>Nom du médecin</mat-label>
-    <input matInput [(ngModel)]="newMedecin" placeholder="Entrez un nom...">
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" (click)="ajouterMedecin()">Ajouter</button>
+<!-- Bouton pour ajouter un médecin -->
+<div class="button-container">
+  <button mat-raised-button color="primary" routerLink="/ajouter-medecin">
+    Ajouter un médecin
+  </button>
 </div>
 
 <!-- Liste des médecins -->

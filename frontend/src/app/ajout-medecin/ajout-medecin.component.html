@@ -1,1 +1,36 @@
-<p>ajout-medecin works!</p>
+<h2 class="title">Ajouter un médecin</h2>
+
+<form class="medecin-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="medecin.nom" name="nom" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Prénom</mat-label>
+    <input matInput [(ngModel)]="medecin.prenom" name="prenom" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" [(ngModel)]="medecin.email" name="email" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Numéro de téléphone</mat-label>
+    <input matInput type="tel" [(ngModel)]="medecin.telephone" name="telephone" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Sexe</mat-label>
+    <mat-select [(ngModel)]="medecin.sexe" name="sexe" required>
+      <mat-option value="Homme">Homme</mat-option>
+      <mat-option value="Femme">Femme</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" (click)="ajouterMedecin()">Ajouter</button>
+    <button mat-raised-button color="warn" routerLink="/admin-medecins">Annuler</button>
+  </div>
+</form>

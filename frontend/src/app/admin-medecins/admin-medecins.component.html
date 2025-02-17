@@ -1,1 +1,24 @@
-<p>admin-medecins works!</p>
+<h2 class="title">Gestion des médecins</h2>
+
+<!-- Formulaire d'ajout de médecin -->
+<div class="form-container">
+  <mat-form-field appearance="fill" class="input-field">
+    <mat-label>Nom du médecin</mat-label>
+    <input matInput [(ngModel)]="newMedecin" placeholder="Entrez un nom...">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="ajouterMedecin()">Ajouter</button>
+</div>
+
+<!-- Liste des médecins -->
+<div class="list-container">
+  <h3>Liste des médecins :</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let medecin of medecins" class="list-item">
+      <span class="medecin-name">{{ medecin.nom }}</span>
+      <button mat-icon-button color="warn" (click)="supprimerMedecin(medecin)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

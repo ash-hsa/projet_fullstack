@@ -1,0 +1,28 @@
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+  
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  mat-list {
+    width: 50%;
+  }
+  
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .rdv-info {
+    font-size: 1.2rem;
+  }
+  

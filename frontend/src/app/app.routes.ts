@@ -16,6 +16,8 @@ export const routes: Routes = [
     {path: "accueil_admin", component: AccueilAdminComponent},
     { path: 'admin-medecins', component: AdminMedecinsComponent },
     { path: 'admin-reservations', component: AdminReservationsComponent },
+    
+
     {path : "", redirectTo: "/login", pathMatch:"full"},
     
     

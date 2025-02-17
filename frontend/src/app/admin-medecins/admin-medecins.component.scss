@@ -5,15 +5,10 @@
     margin-top: 50px;
   }
   
-  .form-container {
+  .button-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  .input-field {
-    width: 300px;
   }
   
   .list-container {
@@ -24,12 +19,18 @@
   
   mat-list {
     width: 50%;
+    max-width: 400px; /* ✅ Pour éviter que la liste soit trop large */
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .list-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 10px;
   }
   

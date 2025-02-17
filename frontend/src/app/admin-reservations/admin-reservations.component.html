@@ -6,7 +6,7 @@
   <mat-list>
     <mat-list-item *ngFor="let rdv of rendezVous" class="list-item">
       <span class="rdv-info">Patient : {{ rdv.patient }} - Date : {{ rdv.date }}</span>
-      <button mat-raised-button color="warn" (click)="annulerRendezVous(rdv)">
+      <button mat-raised-button color="warn" class="annuler-button" (click)="annulerRendezVous(rdv)">
         Annuler
       </button>
     </mat-list-item>

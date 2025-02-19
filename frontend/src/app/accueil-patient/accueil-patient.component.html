@@ -30,7 +30,7 @@
   <p><strong>Nom :</strong> {{ patient.nom }}</p>
   <p><strong>Email :</strong> {{ patient.email }}</p>
   <p><strong>Téléphone :</strong> {{ patient.telephone }}</p>
-  <button mat-raised-button color="accent" (click)="modifierProfil()">
+  <button mat-raised-button color="accent" routerLink="/modifier_profil_patient">
     ✏️ Modifier mes informations
   </button>
 </div>

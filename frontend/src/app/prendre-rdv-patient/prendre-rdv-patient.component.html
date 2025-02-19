@@ -1,1 +1,40 @@
-<p>prendre-rdv-patient works!</p>
+<h2 class="title">📅 Prendre un rendez-vous</h2>
+
+<!-- Sélection du centre de vaccination -->
+<div class="form-group">
+  <label for="centre">🏥 Sélectionner un centre :</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Centre de vaccination</mat-label>
+    <mat-select [(ngModel)]="selectedCentre">
+      <mat-option *ngFor="let centre of centres" [value]="centre">
+        {{ centre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- Sélection de la date -->
+<div class="form-group">
+  <label for="date">📆 Choisir une date :</label>
+  <mat-form-field appearance="fill">
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<!-- Sélection de l'heure -->
+<div class="form-group">
+  <label for="heure">⏰ Choisir une heure :</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Heure</mat-label>
+    <input matInput type="time" [(ngModel)]="selectedHeure">
+  </mat-form-field>
+</div>
+
+<!-- Bouton de validation -->
+<div class="form-group">
+  <button mat-raised-button color="primary" (click)="validerRendezVous()">
+    ✅ Valider le rendez-vous
+  </button>
+</div>

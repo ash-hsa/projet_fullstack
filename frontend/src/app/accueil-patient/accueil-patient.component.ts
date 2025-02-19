@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-patient-accueil',
   standalone: true,

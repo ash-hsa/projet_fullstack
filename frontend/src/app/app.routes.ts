@@ -9,6 +9,7 @@ import { AdminReservationsComponent } from './admin-reservations/admin-reservati
 import { AjouterMedecinComponent} from './ajout-medecin/ajout-medecin.component';
 import { AccueilPatientComponent} from './accueil-patient/accueil-patient.component';
 import { PrendreRdvPatientComponent} from './prendre-rdv-patient/prendre-rdv-patient.component';
+import { ModifierProfilPatientComponent} from './modifier-profil-patient/modifier-profil-patient.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,8 @@ export const routes: Routes = [
     { path: 'ajouter-medecin', component: AjouterMedecinComponent},
     { path: 'accueil-patient', component: AccueilPatientComponent},
     { path: 'prendre_rdv', component: PrendreRdvPatientComponent},
+    { path: 'prendre_rdv', component: ModifierProfilPatientComponent},
+    
     
 
     {path : "", redirectTo: "/login", pathMatch:"full"},

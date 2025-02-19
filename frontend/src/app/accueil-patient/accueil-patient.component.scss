@@ -1,0 +1,30 @@
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+  
+  .section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .annuler-button {
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  

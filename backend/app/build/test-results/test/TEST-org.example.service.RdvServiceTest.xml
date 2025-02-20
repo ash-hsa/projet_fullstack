@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.RdvServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:46" hostname="SOSO" time="0.067">
+<testsuite name="org.example.service.RdvServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T19:06:02" hostname="SOSO" time="0.167">
   <properties/>
-  <testcase name="shouldFindAllRdvsInOrdre()" classname="org.example.service.RdvServiceTest" time="0.06"/>
-  <testcase name="shouldFindOneRdv()" classname="org.example.service.RdvServiceTest" time="0.001"/>
-  <testcase name="shouldfindOneCorrectRdv()" classname="org.example.service.RdvServiceTest" time="0.001"/>
+  <testcase name="shouldFindAllRdvsInOrdre()" classname="org.example.service.RdvServiceTest" time="0.153"/>
+  <testcase name="shouldFindOneRdv()" classname="org.example.service.RdvServiceTest" time="0.005"/>
+  <testcase name="shouldfindOneCorrectRdv()" classname="org.example.service.RdvServiceTest" time="0.002"/>
   <testcase name="shouldFindAllRdvs()" classname="org.example.service.RdvServiceTest" time="0.002"/>
-  <testcase name="notEmptyAllRdv()" classname="org.example.service.RdvServiceTest" time="0.001"/>
+  <testcase name="notEmptyAllRdv()" classname="org.example.service.RdvServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -28,12 +28,16 @@ public class User {
 
     public User(){}
 
-    public User(Integer id, String name, boolean isDoctor, boolean isSAdmin) {
+    
+
+    public User(Integer id, String name, boolean isDoctor, boolean isSAdmin, Address workAt) {
         this.id = id;
         this.name = name;
         this.isDoctor = isDoctor;
         this.isSAdmin = isSAdmin;
+        this.workAt = workAt;
     }
+    
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }

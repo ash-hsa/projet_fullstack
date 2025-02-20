@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.PatientServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:45" hostname="SOSO" time="0.062">
+<testsuite name="org.example.service.PatientServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T19:06:02" hostname="SOSO" time="0.156">
   <properties/>
-  <testcase name="shouldfindOneCorrectPatient()" classname="org.example.service.PatientServiceTest" time="0.055"/>
-  <testcase name="notEmptyAllPatient()" classname="org.example.service.PatientServiceTest" time="0.002"/>
-  <testcase name="shouldFindAllPatientsInOrdre()" classname="org.example.service.PatientServiceTest" time="0.001"/>
-  <testcase name="shouldFindOnePatient()" classname="org.example.service.PatientServiceTest" time="0.001"/>
-  <testcase name="shouldFindAllPatients()" classname="org.example.service.PatientServiceTest" time="0.001"/>
+  <testcase name="shouldfindOneCorrectPatient()" classname="org.example.service.PatientServiceTest" time="0.133"/>
+  <testcase name="notEmptyAllPatient()" classname="org.example.service.PatientServiceTest" time="0.004"/>
+  <testcase name="shouldFindAllPatientsInOrdre()" classname="org.example.service.PatientServiceTest" time="0.005"/>
+  <testcase name="shouldFindOnePatient()" classname="org.example.service.PatientServiceTest" time="0.003"/>
+  <testcase name="shouldFindAllPatients()" classname="org.example.service.PatientServiceTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

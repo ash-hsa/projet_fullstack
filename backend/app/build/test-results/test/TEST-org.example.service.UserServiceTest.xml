@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:46" hostname="SOSO" time="0.049">
+<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T19:06:02" hostname="SOSO" time="0.093">
   <properties/>
-  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.043"/>
-  <testcase name="shouldFindAllUsers()" classname="org.example.service.UserServiceTest" time="0.001"/>
-  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.0"/>
-  <testcase name="shouldFindOneUser()" classname="org.example.service.UserServiceTest" time="0.001"/>
-  <testcase name="notEmptyAllUser()" classname="org.example.service.UserServiceTest" time="0.001"/>
+  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.075"/>
+  <testcase name="shouldFindAllUsers()" classname="org.example.service.UserServiceTest" time="0.004"/>
+  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.004"/>
+  <testcase name="shouldFindOneUser()" classname="org.example.service.UserServiceTest" time="0.002"/>
+  <testcase name="notEmptyAllUser()" classname="org.example.service.UserServiceTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

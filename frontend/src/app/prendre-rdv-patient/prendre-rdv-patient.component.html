@@ -7,7 +7,7 @@
     <mat-label>Centre de vaccination</mat-label>
     <mat-select [(ngModel)]="selectedCentre">
       <mat-option *ngFor="let centre of centres" [value]="centre">
-        {{ centre }}
+        {{ centre.name }} - {{ centre.address.street }}, {{ centre.address.city }}
       </mat-option>
     </mat-select>
   </mat-form-field>

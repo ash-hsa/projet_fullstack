@@ -36,4 +36,7 @@ public class CenterService {
     public void removeOne(Integer id){
         centerRepository.deleteById(id);
     }
+
+   
+    
 }

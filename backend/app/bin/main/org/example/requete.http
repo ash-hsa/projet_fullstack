@@ -1,0 +1,61 @@
+GET http://localhost:8080/api/patients?name=Jean
+
+###
+
+GET http://localhost:8080/api/patient/3
+
+###
+
+DELETE http://localhost:8080/api/patient/3
+
+###
+
+POST http://localhost:8080/api/patients
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Jean",
+  "birthDate": "2020-10-07T00:00:01.084+00:00"
+}
+
+###
+
+POST http://localhost:8080/api/patients
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "John",
+  "birthDate": "2019-10-07T00:00:01.084+00:00"
+}
+
+###
+POST http://localhost:8080/api/admin/users
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John"
+}
+
+
+###
+
+GET http://localhost:8080/api/admin/users?name="John"
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/public/centers
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/api/admin/centers
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Centre de Paris"
+}

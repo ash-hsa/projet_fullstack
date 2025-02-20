@@ -49,10 +49,11 @@ public class UserRestController {
         service.removeOne(id);
     }
 
-    @GetMapping("/public/center/{id}/doctors")
+    @GetMapping(path = "/api/public/center/{id}/doctors")
     public List<User> getDoctorsByCenter(@PathVariable("id") Integer centerId) {
         return service.findDoctorsByCenter(centerId);
     }
+
 
     @DeleteMapping("/admin/user/{id}/doctor")
     public ResponseEntity<String> deleteDoctor(@PathVariable("id") Integer id) {

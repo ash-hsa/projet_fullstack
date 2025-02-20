@@ -18,5 +18,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     
 
     public List<User> findByName(String name);
+        List<User> findByIsDoctorTrueAndWorkAt_Id(Integer centerId);
+    
+    
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T12:40:44" hostname="SOSO" time="0.047">
+<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:46" hostname="SOSO" time="0.049">
   <properties/>
-  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.041"/>
+  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.043"/>
   <testcase name="shouldFindAllUsers()" classname="org.example.service.UserServiceTest" time="0.001"/>
-  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.001"/>
+  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.0"/>
   <testcase name="shouldFindOneUser()" classname="org.example.service.UserServiceTest" time="0.001"/>
   <testcase name="notEmptyAllUser()" classname="org.example.service.UserServiceTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

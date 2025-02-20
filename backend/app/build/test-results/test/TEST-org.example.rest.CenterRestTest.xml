@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.rest.CenterRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-20T12:40:43" hostname="SOSO" time="0.012">
+<testsuite name="org.example.rest.CenterRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:44" hostname="SOSO" time="0.012">
   <properties/>
   <testcase name="ItShouldTestfind()" classname="org.example.rest.CenterRestTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>

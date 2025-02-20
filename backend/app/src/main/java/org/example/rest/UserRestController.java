@@ -47,6 +47,12 @@ public class UserRestController {
         service.removeOne(id);
     }
 
+    @GetMapping(path = "/api/public/center/{id}/doctors")
+public List<User> getDoctorsByCenter(@PathVariable("id") Integer centerId) {
+    return service.findDoctorsByCenter(centerId);
+}
+
+
 
     @ExceptionHandler
     public ResponseEntity<String> handle(UserNotFoundException ex){

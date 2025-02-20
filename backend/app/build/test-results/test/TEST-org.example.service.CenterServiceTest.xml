@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T12:40:43" hostname="SOSO" time="1.097">
+<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-20T15:33:44" hostname="SOSO" time="1.034">
   <properties/>
-  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="1.084"/>
-  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.003"/>
-  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.002"/>
+  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="1.021"/>
+  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.002"/>
+  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.003"/>
   <testcase name="notEmptyAllCentre()" classname="org.example.service.CenterServiceTest" time="0.001"/>
   <testcase name="shouldfindOneCorrectCenter()" classname="org.example.service.CenterServiceTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>

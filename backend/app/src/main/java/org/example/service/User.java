@@ -1,5 +1,6 @@
 package org.example.service;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
@@ -14,9 +15,12 @@ public class User {
     @Id
     private Integer id;
     private String name;
-    private boolean is_s_admin;
-    private boolean is_doctor;
 
+    @Column(name = "is_doctor")
+    private boolean isDoctor;
+
+    @Column(name = "is_s_admin")
+    private boolean isSAdmin;
 
     @OneToOne
     @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name="address_docteur_fk"))
@@ -24,26 +28,26 @@ public class User {
 
     public User(){}
 
-    public User(Integer id, String name, boolean is_s_admin, boolean is_doctor) {
+    public User(Integer id, String name, boolean isDoctor, boolean isSAdmin) {
         this.id = id;
         this.name = name;
-        this.is_doctor = is_doctor;
-        this.is_s_admin = is_s_admin;
+        this.isDoctor = isDoctor;
+        this.isSAdmin = isSAdmin;
     }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public boolean isDoctor() { return isDoctor; }
+    public void setDoctor(boolean doctor) { isDoctor = doctor; }
+
+    public boolean isSAdmin() { return isSAdmin; }
+    public void setSAdmin(boolean sAdmin) { isSAdmin = sAdmin; }
+}
 
     
 
-}
+

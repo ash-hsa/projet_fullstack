@@ -9,6 +9,7 @@ import org.example.exception.UserNotFoundException;
 import org.example.service.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class UserRestController {
@@ -51,6 +53,14 @@ public class UserRestController {
 public List<User> getDoctorsByCenter(@PathVariable("id") Integer centerId) {
     return service.findDoctorsByCenter(centerId);
 }
+
+@DeleteMapping(path = "/api/admin/user/{id}")
+public ResponseEntity<String> deleteDoctor(@PathVariable("id") Integer id) {
+    service.removeDoctor(id); // L'exception est gérée par Spring automatiquement
+    return ResponseEntity.ok("Médecin supprimé avec succès");
+}
+
+
 
 
 

@@ -1,6 +1,8 @@
 package org.example.service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 import org.example.exception.UserNotFoundException;
 import org.example.repository.UserRepository;
@@ -36,6 +38,16 @@ public class UserService {
     public void removeOne(Integer id){
         userRepository.deleteById(id);
     }
+
+    public void removeDoctor(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent() && user.get().isDoctor()) {
+            userRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
+    
 
     public List<User> findDoctorsByCenter(Integer centerId) {
         return userRepository.findByIsDoctorTrueAndWorkAt_Id(centerId);

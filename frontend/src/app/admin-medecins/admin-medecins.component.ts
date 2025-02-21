@@ -49,6 +49,21 @@ export class AdminMedecinsComponent implements OnInit {
   }
 
   supprimerMedecin(medecin: any) {
-    this.medecins = this.medecins.filter(m => m.id !== medecin.id);
+    if (!confirm(`Voulez-vous vraiment supprimer ${medecin.name} ?`)) {
+      return; // Annuler si l'utilisateur ne confirme pas
+    }
+  
+    const url = `http://localhost:8080/api/admin/user/${medecin.id}`;
+  
+    this.http.delete(url).subscribe({
+      next: () => {
+        // Supprimer du tableau local après succès
+        this.medecins = this.medecins.filter(m => m.id !== medecin.id);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la suppression du médecin:', err);
+      }
+    });
   }
+  
 }

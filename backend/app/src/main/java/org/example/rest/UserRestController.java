@@ -54,7 +54,7 @@ public List<User> getDoctorsByCenter(@PathVariable("id") Integer centerId) {
     return service.findDoctorsByCenter(centerId);
 }
 
-@DeleteMapping(path = "/api/admin/user/{id}")
+@DeleteMapping(path = "/api/admin/user/{id}/doctor")
 public ResponseEntity<String> deleteDoctor(@PathVariable("id") Integer id) {
     service.removeDoctor(id); // L'exception est gérée par Spring automatiquement
     return ResponseEntity.ok("Médecin supprimé avec succès");

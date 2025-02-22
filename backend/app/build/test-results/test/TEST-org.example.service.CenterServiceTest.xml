@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-21T14:26:54" hostname="SOSO" time="1.52">
+<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T12:55:02" hostname="SOSO" time="1.103">
   <properties/>
-  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="1.496"/>
-  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.004"/>
-  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.006"/>
+  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="1.086"/>
+  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.002"/>
+  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.002"/>
   <testcase name="notEmptyAllCentre()" classname="org.example.service.CenterServiceTest" time="0.002"/>
-  <testcase name="shouldfindOneCorrectCenter()" classname="org.example.service.CenterServiceTest" time="0.006"/>
+  <testcase name="shouldfindOneCorrectCenter()" classname="org.example.service.CenterServiceTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\sonny\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.9\dfb8707031008535048bad2b69735f46d0b6c5e5\byte-buddy-agent-1.14.9.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

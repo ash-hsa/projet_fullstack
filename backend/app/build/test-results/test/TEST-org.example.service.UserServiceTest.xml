@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T12:55:03" hostname="SOSO" time="0.067">
+<testsuite name="org.example.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T15:15:03" hostname="SOSO" time="0.102">
   <properties/>
-  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.059"/>
-  <testcase name="shouldFindAllUsers()" classname="org.example.service.UserServiceTest" time="0.001"/>
-  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.001"/>
+  <testcase name="shouldfindOneCorrectUser()" classname="org.example.service.UserServiceTest" time="0.086"/>
+  <testcase name="shouldFindAllUsers()" classname="org.example.service.UserServiceTest" time="0.003"/>
+  <testcase name="shouldFindAllUsersInOrdre()" classname="org.example.service.UserServiceTest" time="0.002"/>
   <testcase name="shouldFindOneUser()" classname="org.example.service.UserServiceTest" time="0.002"/>
-  <testcase name="notEmptyAllUser()" classname="org.example.service.UserServiceTest" time="0.002"/>
+  <testcase name="notEmptyAllUser()" classname="org.example.service.UserServiceTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

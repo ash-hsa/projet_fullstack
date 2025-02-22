@@ -3,30 +3,12 @@
 <form class="medecin-form">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input matInput [(ngModel)]="medecin.nom" name="nom" required>
+    <input matInput [(ngModel)]="medecin.name" name="name" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Prénom</mat-label>
-    <input matInput [(ngModel)]="medecin.prenom" name="prenom" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput type="email" [(ngModel)]="medecin.email" name="email" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Numéro de téléphone</mat-label>
-    <input matInput type="tel" [(ngModel)]="medecin.telephone" name="telephone" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Sexe</mat-label>
-    <mat-select [(ngModel)]="medecin.sexe" name="sexe" required>
-      <mat-option value="Homme">Homme</mat-option>
-      <mat-option value="Femme">Femme</mat-option>
-    </mat-select>
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" [(ngModel)]="medecin.password" name="password" required>
   </mat-form-field>
 
   <div class="form-actions">

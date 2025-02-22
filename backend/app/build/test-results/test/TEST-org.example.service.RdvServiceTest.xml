@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.RdvServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T12:55:03" hostname="SOSO" time="0.065">
+<testsuite name="org.example.service.RdvServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T15:15:03" hostname="SOSO" time="0.085">
   <properties/>
-  <testcase name="shouldFindAllRdvsInOrdre()" classname="org.example.service.RdvServiceTest" time="0.056"/>
-  <testcase name="shouldFindOneRdv()" classname="org.example.service.RdvServiceTest" time="0.002"/>
+  <testcase name="shouldFindAllRdvsInOrdre()" classname="org.example.service.RdvServiceTest" time="0.073"/>
+  <testcase name="shouldFindOneRdv()" classname="org.example.service.RdvServiceTest" time="0.003"/>
   <testcase name="shouldfindOneCorrectRdv()" classname="org.example.service.RdvServiceTest" time="0.001"/>
-  <testcase name="shouldFindAllRdvs()" classname="org.example.service.RdvServiceTest" time="0.001"/>
+  <testcase name="shouldFindAllRdvs()" classname="org.example.service.RdvServiceTest" time="0.002"/>
   <testcase name="notEmptyAllRdv()" classname="org.example.service.RdvServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

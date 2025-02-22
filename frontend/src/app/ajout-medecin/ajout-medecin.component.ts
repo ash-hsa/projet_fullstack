@@ -1,31 +1,44 @@
-import { Component } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajouter-medecin',
   standalone: true,
-  imports: [RouterModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './ajout-medecin.component.html',
   styleUrl: './ajout-medecin.component.scss'
 })
-export class AjouterMedecinComponent {
+export class AjouterMedecinComponent implements OnInit {
+  adminConnecte = { centerId: 1 }; // 🔹 Simule l'admin connecté (centre 1)
+
   medecin = {
-    nom: '',
-    prenom: '',
-    email: '',
-    telephone: '',
-    sexe: ''
+    name: '',
+    password: '',
+    is_doctor: true,
+    is_s_admin: false,
+    address_id: this.adminConnecte.centerId // 🔹 Fixe directement l'ID du centre
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
+
+  ngOnInit() {
+    console.log("Admin connecté - Centre ID:", this.adminConnecte.centerId);
+  }
 
   ajouterMedecin() {
-    console.log("Médecin ajouté :", this.medecin);
-    this.router.navigate(['/admin-medecins']); // Retour à la liste après ajout
-  }
+    console.log("Médecin envoyé :", this.medecin);
+
+    this.http.post('http://localhost:8080/api/medecins', this.medecin)
+      .subscribe(response => {
+        console.log("Médecin ajouté :", response);
+        this.router.navigate(['/admin-medecins']); 
+      }, error => {
+        console.error("Erreur lors de l'ajout", error);
+      });
+}
 }

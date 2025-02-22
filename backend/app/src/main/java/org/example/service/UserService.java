@@ -50,6 +50,7 @@ public class UserService {
     
 
     public List<User> findDoctorsByCenter(Integer centerId) {
-        return userRepository.findByIsDoctorTrueAndWorkAt_Id(centerId);
+        return userRepository.findByIsDoctorTrueAndAddressId(centerId);
+
     }
 }

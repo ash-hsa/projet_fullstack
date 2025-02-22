@@ -7,14 +7,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "utilisateur")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "is_doctor")
     private boolean isDoctor;
@@ -22,22 +29,19 @@ public class User {
     @Column(name = "is_s_admin")
     private boolean isSAdmin;
 
-    @OneToOne
-    @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name="address_docteur_fk"))
-    private Address workAt;
+    @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
+    private Integer addressId;
 
-    public User(){}
+    public User() {}
 
-    
-
-    public User(Integer id, String name, boolean isDoctor, boolean isSAdmin, Address workAt) {
+    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.isDoctor = isDoctor;
         this.isSAdmin = isSAdmin;
-        this.workAt = workAt;
+        this.addressId = addressId;
     }
-    
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -45,13 +49,15 @@ public class User {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
     public boolean isDoctor() { return isDoctor; }
     public void setDoctor(boolean doctor) { isDoctor = doctor; }
 
     public boolean isSAdmin() { return isSAdmin; }
     public void setSAdmin(boolean sAdmin) { isSAdmin = sAdmin; }
+
+    public Integer getAddressId() { return addressId; }
+    public void setAddressId(Integer addressId) { this.addressId = addressId; }
 }
-
-    
-
-

@@ -27,7 +27,7 @@ import { RouterModule } from '@angular/router';
 export class AdminMedecinsComponent implements OnInit {
   apiUrl = 'http://localhost:8080/api/public/center/';
   adminConnecte = { centerId: 1 }; // Simule l'admin connecté
-  medecins: any[] = []; // Définir un tableau vide
+  medecins: any[] = []; 
 
   constructor(private http: HttpClient) {}
 

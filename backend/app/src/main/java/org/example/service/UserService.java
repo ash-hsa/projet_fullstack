@@ -42,7 +42,6 @@ public class UserService implements UserDetailsService{
         userRepository.deleteById(id);
     }
 
-<<<<<<< HEAD
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByName(username).get(0);
@@ -54,8 +53,6 @@ public class UserService implements UserDetailsService{
             .build();
     }
 }
-=======
->>>>>>> ff80831a (Supression des médecins lorsque l'on appuie sur la poubelle)
     public void removeDoctor(Integer id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent() && user.get().isDoctor()) {
@@ -67,11 +64,7 @@ public class UserService implements UserDetailsService{
     
 
     public List<User> findDoctorsByCenter(Integer centerId) {
-<<<<<<< HEAD
         return userRepository.findByIsDoctorTrueAndAddressId(centerId);
 
-=======
-        return userRepository.findByIsDoctorTrueAndWorkAt_Id(centerId);
->>>>>>> ff80831a (Supression des médecins lorsque l'on appuie sur la poubelle)
     }
 }

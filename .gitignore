@@ -2,9 +2,9 @@
 /backend/.gradle
 
 # Ignore Gradle build output directory
-/build
-/bin
-/lib
+/backend/app/build
+/backend/app/bin
+/backend/app/lib
 
 # Ignore IDE folder
 .idea

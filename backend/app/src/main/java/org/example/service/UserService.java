@@ -6,10 +6,13 @@ import org.example.exception.UserNotFoundException;
 import org.example.repository.RdvRepository;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService{
     
     @Autowired
     private UserRepository userRepository;
@@ -36,5 +39,16 @@ public class UserService {
 
     public void removeOne(Integer id){
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByName(username).get(0);
+        
+        return org.springframework.security.core.userdetails.User
+            .withUsername(user.getName())
+            .password(user.getPassword()) // Assure-toi que c'est bien encodé !
+            .roles("USER") // Mets ici les rôles si besoin
+            .build();
     }
 }

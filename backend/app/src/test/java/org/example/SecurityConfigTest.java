@@ -1,11 +1,12 @@
-package org.example.repository;
+
+package org.example;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.net.PasswordAuthentication;
 
-import org.example.service.User;
 import org.example.repository.UserRepository;
+import org.example.service.User;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,14 @@ public class SecurityConfigTest {
     public void itShouldAllowUser()
             throws Exception {
         //Given
-        User user = new User();
-        user.setName("toto");
-        user.setPassword(passwordEncoder.encode("tata"));
-        user.setId(0);
-        repository.save(user);
+        User utilisateur = new User();
+        utilisateur.setName("toto");
+        utilisateur.setPassword(passwordEncoder.encode("tata"));
+        utilisateur.setId(0);
+        repository.save(utilisateur);
+        System.out.println(repository.findAll());
         //when
-        mockMvc.perform(MockMvcRequestBuilders.get("/centres")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/public/centers")
                         .contentType(MediaType.APPLICATION_JSON)
                         // toto:tata
                         .header("Authorization","Basic dG90bzp0YXRh"))
@@ -50,4 +52,3 @@ public class SecurityConfigTest {
     
     
 }
-

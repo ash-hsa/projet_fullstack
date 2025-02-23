@@ -1,5 +1,7 @@
 package org.example.rest;
 
+import java.util.List;
+import java.util.Optional;
 
 
 import org.springframework.http.ResponseEntity;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("login")
+@RequestMapping("api/public/login")
 public class LoginController {
     
     @GetMapping()

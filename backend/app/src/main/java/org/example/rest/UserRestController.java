@@ -69,6 +69,7 @@ public class UserRestController {
         }
     
         user.setDoctor(true);
+        user.setAdmin(false);
         user.setSAdmin(false);
     
         // 🔹 Assigner le centre de vaccination de l'admin (1 en dur)

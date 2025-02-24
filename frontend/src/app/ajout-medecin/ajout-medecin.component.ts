@@ -21,6 +21,7 @@ export class AjouterMedecinComponent implements OnInit {
     password: '',
     is_doctor: true,
     is_s_admin: false,
+    is_admin: false,
     address_id: this.adminConnecte.centerId // 🔹 Fixe directement l'ID du centre
   };
 

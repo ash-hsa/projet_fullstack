@@ -84,4 +84,11 @@ public class UserService implements UserDetailsService{
         return userRepository.findByIsDoctorTrueAndAddressId(centerId);
 
     }
+
+
+    public User findByName(String name) {
+        return userRepository.findByName(name).stream().findFirst()
+            .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
+    }
+    
 }

@@ -32,6 +32,9 @@ public class User {
     @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
     private Integer addressId;
 
+    private String tel;
+    private String mail;
+
     public User() {}
 
     public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
@@ -60,4 +63,10 @@ public class User {
 
     public Integer getAddressId() { return addressId; }
     public void setAddressId(Integer addressId) { this.addressId = addressId; }
+
+    public String getMail() { return mail; }
+    public void setMail(String mail) { this.mail = mail; }
+
+    public String getTel() { return tel; }
+    public void setTel(String tel) { this.tel = tel; }
 }

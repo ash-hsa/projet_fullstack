@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-22T15:15:01" hostname="SOSO" time="2.007">
+<testsuite name="org.example.service.CenterServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-24T11:07:27" hostname="daniel-Swift-SF314-41" time="2.662">
   <properties/>
-  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="1.977"/>
-  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.004"/>
-  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.004"/>
-  <testcase name="notEmptyAllCentre()" classname="org.example.service.CenterServiceTest" time="0.007"/>
-  <testcase name="shouldfindOneCorrectCenter()" classname="org.example.service.CenterServiceTest" time="0.01"/>
+  <testcase name="shouldFindAllCentresInOrdre()" classname="org.example.service.CenterServiceTest" time="2.604"/>
+  <testcase name="shouldfindOneCenter()" classname="org.example.service.CenterServiceTest" time="0.01"/>
+  <testcase name="shouldFindAllCentres()" classname="org.example.service.CenterServiceTest" time="0.009"/>
+  <testcase name="notEmptyAllCentre()" classname="org.example.service.CenterServiceTest" time="0.006"/>
+  <testcase name="shouldfindOneCorrectCenter()" classname="org.example.service.CenterServiceTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\sonny\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.9\dfb8707031008535048bad2b69735f46d0b6c5e5\byte-buddy-agent-1.14.9.jar)
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/daniel/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.9/dfb8707031008535048bad2b69735f46d0b6c5e5/byte-buddy-agent-1.14.9.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release

@@ -14,21 +14,43 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './ajout-medecin.component.scss'
 })
 export class AjouterMedecinComponent implements OnInit {
-  adminConnecte = { centerId: 1 }; // 🔹 Simule l'admin connecté (centre 1)
+  adminConnecte: any = {}; // 🟡 Stocke l'admin connecté dynamiquement
 
   medecin = {
     name: '',
     password: '',
     isDoctor: true,
     isSAdmin: false,
-    addressId: this.adminConnecte.centerId
-
+    addressId: null  // 🟡 À remplir dynamiquement
   };
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    console.log("Admin connecté - Centre ID:", this.adminConnecte.centerId);
+    this.chargerAdminConnecte();
+  }
+
+  // 🟢 Récupère les infos de l'admin connecté
+  chargerAdminConnecte() {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+      console.error("❌ Erreur : Aucun token trouvé. Connecte-toi d'abord !");
+      return;
+    }
+
+    const headers = { 'Authorization': token };
+    
+    this.http.get<any>("http://localhost:8080/api/me", { headers }).subscribe({
+      next: (admin) => {
+        this.adminConnecte = admin;
+        this.medecin.addressId = admin.addressId; // 🟢 Dynamiser l'ID du centre
+        console.log("✅ Admin connecté :", admin);
+      },
+      error: (err) => {
+        console.error("❌ Erreur lors de la récupération de l'admin connecté :", err);
+      }
+    });
   }
 
   ajouterMedecin() {
@@ -40,13 +62,13 @@ export class AjouterMedecinComponent implements OnInit {
         return;
     }
 
-    // 🔹 Construire l'objet médecin
+    // 🟢 Construire dynamiquement l'objet médecin
     const nouveauMedecin = {
         name: this.medecin.name,
         password: this.medecin.password || "defaultpass",
-        isDoctor: true,  // 🩺 Forcer ici
+        isDoctor: true,
         isSAdmin: false,
-        addressId: 1
+        addressId: this.medecin.addressId // 🟢 Dynamique selon l'admin connecté
     };
 
     console.log("📤 Données envoyées :", JSON.stringify(nouveauMedecin, null, 2));
@@ -66,7 +88,5 @@ export class AjouterMedecinComponent implements OnInit {
             console.error("❌ Erreur lors de l’ajout du médecin:", err);
         }
     });
-}
-
-  
+  }
 }

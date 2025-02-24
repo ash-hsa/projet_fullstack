@@ -38,15 +38,11 @@ Content-Type: application/json
 {
   "id": 1,
   "name": "John",
-<<<<<<< HEAD
-  "password": "Doe"
-=======
   "password" : "Doe",
   "is_doctor":false,
   "is_s_admin":true,
   "tel":"07 07 07 07 07",
   "mail":"JohnDoe@mail.com"
->>>>>>> api_rest
 }
 
 

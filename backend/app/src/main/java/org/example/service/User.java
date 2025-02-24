@@ -7,62 +7,66 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "utilisateur")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
     private String name;
 
-
-    private boolean is_s_admin;
-
-
-    private boolean is_doctor;
-
-    @Column(nullable = false)
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "is_doctor")
+    private boolean isDoctor;
 
-    @OneToOne
-    @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name="address_docteur_fk"))
-    private Address workAt;
+    @Column(name = "is_s_admin")
+    private boolean isSAdmin;
 
+    @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
+    private Integer addressId;
 
-    
-    public User(){}
+    private String tel;
+    private String mail;
 
-    public User(Integer id, String name, boolean is_s_admin, boolean is_doctor) {
+    public User() {}
+
+    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
         this.id = id;
         this.name = name;
-        this.is_doctor = is_doctor;
-        this.is_s_admin = is_s_admin;
+        this.password = password;
+        this.isDoctor = isDoctor;
+        this.isSAdmin = isSAdmin;
+        this.addressId = addressId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
-    public void setPassword(String password){
-        this.password=password;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getPassword(){
-        return this.password;
-    }
-    
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
+    public boolean isDoctor() { return isDoctor; }
+    public void setDoctor(boolean doctor) { isDoctor = doctor; }
+
+    public boolean isSAdmin() { return isSAdmin; }
+    public void setSAdmin(boolean sAdmin) { isSAdmin = sAdmin; }
+
+    public Integer getAddressId() { return addressId; }
+    public void setAddressId(Integer addressId) { this.addressId = addressId; }
+
+    public String getMail() { return mail; }
+    public void setMail(String mail) { this.mail = mail; }
+
+    public String getTel() { return tel; }
+    public void setTel(String tel) { this.tel = tel; }
 }

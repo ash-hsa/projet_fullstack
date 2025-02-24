@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.example.exception.CenterNotFoundException;
 import org.example.service.Center;
+
+
 import org.example.service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +38,10 @@ public class CenterRestController {
     public Center findAll(@PathVariable("id2") Integer id) throws CenterNotFoundException{
         return service.findOne(id);
     }
+
+
+
+
 
     @PostMapping(path = "/api/admin/centers")
     public ResponseEntity<Center> create(@RequestBody Center c) throws URISyntaxException{

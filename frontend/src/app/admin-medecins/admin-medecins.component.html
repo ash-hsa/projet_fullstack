@@ -1,0 +1,25 @@
+<h2 class="title">Gestion des médecins</h2>
+
+<!-- Bouton pour ajouter un médecin -->
+<div class="button-container">
+  <button mat-raised-button color="primary" routerLink="/ajouter-medecin">
+    Ajouter un médecin
+  </button>
+</div>
+
+<!-- Liste des médecins -->
+<div class="list-container">
+  <h3>Liste des médecins :</h3>
+  <mat-list *ngIf="medecins.length > 0; else noMedecins">
+    <mat-list-item *ngFor="let medecin of medecins" class="list-item">
+      <span class="medecin-name">{{ medecin.name }}</span>
+      <button mat-icon-button color="warn" (click)="supprimerMedecin(medecin)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+  
+  <ng-template #noMedecins>
+    <p>Aucun médecin trouvé.</p>
+  </ng-template>
+</div>

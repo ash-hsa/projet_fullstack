@@ -1,10 +1,12 @@
 
 
 export interface VaccinationCenter {
-    id:number;
+    id: number;
     name: string;
-    address: string;
+    address: {
+        street: string;
+        city: string;
+    };
     postalCode: string;
-    city: string;
     openingDate: Date;
 }

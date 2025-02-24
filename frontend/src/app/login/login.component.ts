@@ -4,11 +4,12 @@ import { User } from '../model/user';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatButtonModule, FormsModule],
+  imports: [MatButtonModule, MatInputModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

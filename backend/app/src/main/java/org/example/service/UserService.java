@@ -1,9 +1,10 @@
 package org.example.service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 import org.example.exception.UserNotFoundException;
-import org.example.repository.RdvRepository;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,18 +18,18 @@ public class UserService implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
 
-    public UserService(final UserRepository userrepository){
-        this.userRepository = userrepository;
+    public UserService(final UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     public List<User> findAll(String name){
-        if(name==null){
-            name="";
+        if(name == null){
+            name = "";
         }
-        return userRepository.findByNameLikeIgnoringCase("%"+name+"%");
+        return userRepository.findByNameLikeIgnoringCase("%" + name + "%");
     }
 
-    public User findOne(Integer id) throws UserNotFoundException{
+    public User findOne(Integer id) throws UserNotFoundException {
         return userRepository.findById(id)
             .orElseThrow(UserNotFoundException::new);
     }
@@ -50,5 +51,20 @@ public class UserService implements UserDetailsService{
             .password(user.getPassword()) // Assure-toi que c'est bien encodé !
             .roles("USER") // Mets ici les rôles si besoin
             .build();
+    }
+}
+    public void removeDoctor(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent() && user.get().isDoctor()) {
+            userRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
+    
+
+    public List<User> findDoctorsByCenter(Integer centerId) {
+        return userRepository.findByIsDoctorTrueAndAddressId(centerId);
+
     }
 }

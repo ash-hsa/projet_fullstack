@@ -1,0 +1,37 @@
+<h2 class="title">Bienvenue sur votre espace patient</h2>
+
+<!-- Section Rendez-vous -->
+<div class="section">
+  <h3>📅 Mes rendez-vous à venir</h3>
+  <mat-list *ngIf="rendezVous.length > 0; else noRdv">
+    <mat-list-item *ngFor="let rdv of rendezVous" class="list-item">
+      <span class="rdv-info">Centre : {{ rdv.centre }} - Date : {{ rdv.date }}</span>
+      <button mat-raised-button color="warn" class="annuler-button" (click)="annulerRendezVous(rdv)">
+        Annuler
+      </button>
+    </mat-list-item>
+  </mat-list>
+  <ng-template #noRdv>
+    <p>Aucun rendez-vous à venir.</p>
+  </ng-template>
+</div>
+
+<!-- Section Prendre un rendez-vous -->
+<div class="section">
+    <button mat-raised-button color="primary" routerLink="/prendre_rdv">
+        ➕ Prendre un nouveau rendez-vous
+    </button>
+      
+</div>
+
+<!-- Section Profil -->
+<div class="section">
+  <h3>👤 Mon profil</h3>
+  <p><strong>Nom :</strong> {{ patient.nom }}</p>
+  <p><strong>Email :</strong> {{ patient.email }}</p>
+  <p><strong>Téléphone :</strong> {{ patient.telephone }}</p>
+  <button mat-raised-button color="accent" routerLink="/modifier_profil_patient">
+    ✏️ Modifier mes informations
+  </button>
+</div>
+

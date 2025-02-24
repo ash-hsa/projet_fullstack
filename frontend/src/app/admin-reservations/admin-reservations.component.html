@@ -1,0 +1,14 @@
+<h2 class="title">Gestion des rendez-vous</h2>
+
+<!-- Liste des rendez-vous -->
+<div class="list-container">
+  <h3>Rendez-vous à venir :</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let rdv of rendezVous" class="list-item">
+      <span class="rdv-info">Patient : {{ rdv.patient }} - Date : {{ rdv.date }}</span>
+      <button mat-raised-button color="warn" class="annuler-button" (click)="annulerRendezVous(rdv)">
+        Annuler
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

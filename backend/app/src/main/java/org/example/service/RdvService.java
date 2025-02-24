@@ -20,7 +20,15 @@ public class RdvService {
     }
 
     public List<Rdv> findAll(Date date){
+        if (date == null) {
+            return rdvRepository.findAll();
+        }
         return rdvRepository.findByDate(date);
+    }
+
+    //Find list rdv of a patient
+    public List<Rdv> findAllforPatient(Patient patient){
+        return rdvRepository.findByPatient(patient);
     }
 
     public Rdv findOne(Integer id) throws RdvNotFoundException{

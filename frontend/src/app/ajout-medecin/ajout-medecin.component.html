@@ -1,0 +1,18 @@
+<h2 class="title">Ajouter un médecin</h2>
+
+<form class="medecin-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="medecin.name" name="name" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" [(ngModel)]="medecin.password" name="password" required>
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" (click)="ajouterMedecin()">Ajouter</button>
+    <button mat-raised-button color="warn" routerLink="/admin-medecins">Annuler</button>
+  </div>
+</form>

@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService{
             .roles("USER") // Mets ici les rôles si besoin
             .build();
     }
-}
+
     public void removeDoctor(Integer id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent() && user.get().isDoctor()) {

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findByNameLikeIgnoringCase(String name);
+
+    List<User> findByName(String name);
     
     
     List<User> findByIsDoctorTrueAndAddressId(Integer centerId);

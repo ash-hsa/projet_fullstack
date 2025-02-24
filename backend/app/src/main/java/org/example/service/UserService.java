@@ -34,9 +34,26 @@ public class UserService implements UserDetailsService{
             .orElseThrow(UserNotFoundException::new);
     }
 
-    public void create(User p){
+    public void create(User p) {
+        System.out.println("🔍 Vérification dans UserService avant insertion:");
+        System.out.println("➡️ Name: " + p.getName());
+        System.out.println("➡️ Password: " + p.getPassword());
+        System.out.println("➡️ isDoctor (REÇU PAR SERVICE): " + p.isDoctor());
+    
+        // 🔹 Ajoute une vérification de sécurité pour éviter null
+        if (p.isDoctor() == false) {
+            System.out.println("❌ ATTENTION : isDoctor est encore FALSE dans le Service !");
+            p.setDoctor(true);
+            System.out.println("🔄 Correction dans UserService : isDoctor est maintenant TRUE !");
+        }
+    
         userRepository.save(p);
     }
+    
+    
+    
+    
+    
 
     public void removeOne(Integer id){
         userRepository.deleteById(id);

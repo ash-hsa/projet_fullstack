@@ -38,32 +38,43 @@ export class AdminMedecinsComponent implements OnInit {
   chargerMedecins() {
     const url = `${this.apiUrl}${this.adminConnecte.centerId}/doctors`;
 
-    this.http.get<any[]>(url).subscribe({
+    const headers = {
+      'Authorization': localStorage.getItem("authToken") || "", // 🔹 Ajoute le token
+      'Content-Type': 'application/json'
+    };
+
+    this.http.get<any[]>(url, { headers }).subscribe({
       next: (data) => {
         this.medecins = data;
+        console.log("Médecins chargés ✅ :", data);
       },
       error: (err) => {
-        console.error('Erreur lors du chargement des médecins:', err);
+        console.error('❌ Erreur lors du chargement des médecins:', err);
       }
     });
+}
+
+
+supprimerMedecin(medecin: any) {
+  if (!confirm(`Voulez-vous vraiment supprimer ${medecin.name} ?`)) {
+    return; // Annuler si l'utilisateur ne confirme pas
   }
 
-  supprimerMedecin(medecin: any) {
-    if (!confirm(`Voulez-vous vraiment supprimer ${medecin.name} ?`)) {
-      return; // Annuler si l'utilisateur ne confirme pas
+  const url = `http://localhost:8080/api/admin/user/${medecin.id}`;
+  const headers = {
+    'Authorization': localStorage.getItem("authToken") || "", // 🔹 Ajoute le token
+    'Content-Type': 'application/json'
+  };
+
+  this.http.delete(url, { headers }).subscribe({
+    next: () => {
+      // ✅ Supprimer du tableau local après succès
+      this.medecins = this.medecins.filter(m => m.id !== medecin.id);
+      console.log(`✅ Médecin ${medecin.name} supprimé`);
+    },
+    error: (err) => {
+      console.error('❌ Erreur lors de la suppression du médecin:', err);
     }
-  
-    const url = `http://localhost:8080/api/admin/user/${medecin.id}`;
-  
-    this.http.delete(url).subscribe({
-      next: () => {
-        // Supprimer du tableau local après succès
-        this.medecins = this.medecins.filter(m => m.id !== medecin.id);
-      },
-      error: (err) => {
-        console.error('Erreur lors de la suppression du médecin:', err);
-      }
-    });
-  }
-  
+  });
+}
 }

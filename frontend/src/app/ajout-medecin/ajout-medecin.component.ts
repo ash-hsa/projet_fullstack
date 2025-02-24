@@ -19,9 +19,10 @@ export class AjouterMedecinComponent implements OnInit {
   medecin = {
     name: '',
     password: '',
-    is_doctor: true,
-    is_s_admin: false,
-    address_id: this.adminConnecte.centerId // 🔹 Fixe directement l'ID du centre
+    isDoctor: true,
+    isSAdmin: false,
+    addressId: this.adminConnecte.centerId
+
   };
 
   constructor(private router: Router, private http: HttpClient) {}
@@ -31,14 +32,41 @@ export class AjouterMedecinComponent implements OnInit {
   }
 
   ajouterMedecin() {
-    console.log("Médecin envoyé :", this.medecin);
+    const url = "http://localhost:8080/api/admin/users"; 
+    const token = localStorage.getItem("authToken");
 
-    this.http.post('http://localhost:8080/api/medecins', this.medecin)
-      .subscribe(response => {
-        console.log("Médecin ajouté :", response);
-        this.router.navigate(['/admin-medecins']); 
-      }, error => {
-        console.error("Erreur lors de l'ajout", error);
-      });
+    if (!token) {
+        console.error("❌ Erreur : Pas de token trouvé. Connecte-toi d'abord !");
+        return;
+    }
+
+    // 🔹 Construire l'objet médecin
+    const nouveauMedecin = {
+        name: this.medecin.name,
+        password: this.medecin.password || "defaultpass",
+        isDoctor: true,  // 🩺 Forcer ici
+        isSAdmin: false,
+        addressId: 1
+    };
+
+    console.log("📤 Données envoyées :", JSON.stringify(nouveauMedecin, null, 2));
+
+    const headers = {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+    };
+
+    this.http.post(url, nouveauMedecin, { headers }).subscribe({
+        next: (response) => {
+            console.log("✅ Médecin ajouté avec succès :", response);
+            alert("Médecin ajouté !");
+            this.router.navigate(['/admin-medecins']);
+        },
+        error: (err) => {
+            console.error("❌ Erreur lors de l’ajout du médecin:", err);
+        }
+    });
 }
+
+  
 }

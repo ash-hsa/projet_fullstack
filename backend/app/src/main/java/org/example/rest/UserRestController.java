@@ -38,11 +38,7 @@ public class UserRestController {
         return service.findOne(id);
     }
 
-    @PostMapping("/admin/users")
-    public ResponseEntity<User> create(@RequestBody User p) throws URISyntaxException {
-        service.create(p);
-        return ResponseEntity.created(new URI("user/" + p.getId())).build();
-    }
+    
 
     @DeleteMapping("/admin/user/{id}")
     public void delete(@PathVariable("id") Integer id) {
@@ -60,23 +56,35 @@ public class UserRestController {
         return ResponseEntity.ok("Médecin supprimé avec succès");
     }
 
-    @PostMapping("/medecins")
-    public ResponseEntity<?> ajouterMedecin(@RequestBody User user) {
-        System.out.println("Médecin reçu : " + user);
-    
-        if (user.getName() == null || user.getPassword() == null) {
-            return ResponseEntity.badRequest().body("Le nom et le mot de passe sont obligatoires");
-        }
-    
-        user.setDoctor(true);
-        user.setSAdmin(false);
-    
-        // 🔹 Assigner le centre de vaccination de l'admin (1 en dur)
-        user.setAddressId(1);
-    
-        service.create(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    @PostMapping("/admin/users")
+public ResponseEntity<User> create(@RequestBody User user) throws URISyntaxException {
+    System.out.println("📥 JSON REÇU DU FRONT:");
+    System.out.println("➡️ Name: " + user.getName());
+    System.out.println("➡️ Password: " + user.getPassword());
+    System.out.println("➡️ isDoctor (AVANT): " + user.isDoctor());
+
+    // 🔹 Forcer la valeur de `isDoctor`
+    user.setDoctor(true);
+    user.setSAdmin(false);
+
+    System.out.println("🛠 MODIFICATION AVANT INSERTION:");
+    System.out.println("➡️ isDoctor (APRÈS SET): " + user.isDoctor());
+
+    // 🔹 Vérification avant de passer à `service.create`
+    if (user.isDoctor()) {
+        System.out.println("✅ isDoctor est bien TRUE avant insertion !");
+    } else {
+        System.out.println("❌ isDoctor est encore FALSE avant insertion !");
     }
+
+    service.create(user);
+    return ResponseEntity.created(new URI("user/" + user.getId())).build();
+}
+
+
+
+
+
     
 
     @ExceptionHandler

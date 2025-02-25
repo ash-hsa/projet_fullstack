@@ -1,25 +1,25 @@
 <h2 class="title">Gestion des centres</h2>
 
-<!-- Bouton pour ajouter un médecin -->
+<!-- Bouton pour ajouter un centre -->
 <div class="button-container">
-  <button mat-raised-button color="primary" routerLink="/ajouter-medecin">
+  <button mat-raised-button color="primary" routerLink="/ajouter-centre">
     Ajouter un centre
   </button>
 </div>
 
-<!-- Liste des médecins -->
+<!-- Liste des centress -->
 <div class="list-container">
   <h3>Liste des centres :</h3>
-  <mat-list *ngIf="medecins.length > 0; else noMedecins">
-    <mat-list-item *ngFor="let medecin of medecins" class="list-item">
-      <span class="medecin-name">{{ medecin.name }}</span>
-      <button mat-icon-button color="warn" (click)="supprimerMedecin(medecin)">
+  <mat-list *ngIf="centers.length > 0; else noCenters">
+    <mat-list-item *ngFor="let center of centers" class="list-item">
+      <span class="center-name">{{ center.name }}</span>
+      <button mat-icon-button color="warn" (click)="supprimerCentre(center)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-list-item>
   </mat-list>
   
-  <ng-template #noMedecins>
+  <ng-template #noCenters>
     <p>Aucun centre trouvé.</p>
   </ng-template>
 </div>

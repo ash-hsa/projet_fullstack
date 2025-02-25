@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-medecins',
+  selector: 'app-super-admin-centres',
   standalone: true,
   imports: [
     HttpClientModule, 
@@ -24,14 +24,14 @@ import { RouterModule } from '@angular/router';
 })
 
 export class SuperAdminCentreComponent implements OnInit {
-  apiUrl = 'http://localhost:8080/api/public/center/';
+  apiUrl = 'http://localhost:8080/';
   adminConnecte: any = null; // ✅ Dynamique
-  medecins: any[] = []; 
+  centers: any[] = []; 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getAdminConnecte(); // 🔹 Récupère l’admin connecté avant de charger les médecins
+    this.getAdminConnecte(); // 🔹 Récupère l’admin connecté avant de charger les centres
   }
 
   getAdminConnecte() {
@@ -48,7 +48,7 @@ export class SuperAdminCentreComponent implements OnInit {
         console.log("✅ Admin connecté :", user);
         
         if (this.adminConnecte.addressId) {
-          this.chargerMedecins(); // ✅ Charge les médecins dynamiquement après récupération de l'admin
+          this.chargerCentres(); // ✅ Charge les centress dynamiquement après récupération de l'admin
         } else {
           console.warn("⚠️ L’admin connecté n’a pas d’adresse ID !");
         }
@@ -59,13 +59,13 @@ export class SuperAdminCentreComponent implements OnInit {
     });
   }
 
-  chargerMedecins() {
+  chargerCentres() {
     if (!this.adminConnecte || !this.adminConnecte.addressId) {
       console.warn("⚠️ Aucun centre ID disponible pour cet admin !");
       return;
     }
 
-    const url = `${this.apiUrl}${this.adminConnecte.addressId}/doctors`;
+    const url = `${this.apiUrl}${this.adminConnecte.addressId}/centers`;
     
     const headers = {
       'Authorization': localStorage.getItem("authToken") || "", // 🔐 Ajoute le token
@@ -74,21 +74,21 @@ export class SuperAdminCentreComponent implements OnInit {
 
     this.http.get<any[]>(url, { headers }).subscribe({
       next: (data) => {
-        this.medecins = data;
-        console.log("✅ Médecins chargés :", data);
+        this.centers = data;
+        console.log("✅ Centress chargés :", data);
       },
       error: (err) => {
-        console.error('❌ Erreur lors du chargement des médecins:', err);
+        console.error('❌ Erreur lors du chargement des centres:', err);
       }
     });
   }
 
-  supprimerMedecin(medecin: any) {
-    if (!confirm(`Voulez-vous vraiment supprimer ${medecin.name} ?`)) {
+  supprimerCentre(center: any) {
+    if (!confirm(`Voulez-vous vraiment supprimer ${center.name} ?`)) {
       return; // Annuler si l'utilisateur ne confirme pas
     }
 
-    const url = `http://localhost:8080/api/admin/user/${medecin.id}`;
+    const url = `http://localhost:8080/api/admin/center/${center.id}`;
     const headers = {
       'Authorization': localStorage.getItem("authToken") || "", // 🔹 Ajoute le token
       'Content-Type': 'application/json'
@@ -96,11 +96,11 @@ export class SuperAdminCentreComponent implements OnInit {
 
     this.http.delete(url, { headers }).subscribe({
       next: () => {
-        this.medecins = this.medecins.filter(m => m.id !== medecin.id);
-        console.log(`✅ Médecin ${medecin.name} supprimé`);
+        this.centers = this.centers.filter(m => m.id !== center.id);
+        console.log(`✅ Centre ${center.name} supprimé`);
       },
       error: (err) => {
-        console.error('❌ Erreur lors de la suppression du médecin:', err);
+        console.error('❌ Erreur lors de la suppression du centre:', err);
       }
     });
   }

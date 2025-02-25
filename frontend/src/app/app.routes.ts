@@ -6,6 +6,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilAdminComponent } from './accueil-admin/accueil-admin.component';
 import { AccueilSuperAdminComponent } from './accueil-super-admin/accueil-super-admin.component';
 import { AdminMedecinsComponent } from './admin-medecins/admin-medecins.component';
+import { SuperAdminCentreComponent } from './super-admin-centre/super-admin-centre.component';
 import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 import { AjouterMedecinComponent} from './ajout-medecin/ajout-medecin.component';
 import { AccueilPatientComponent} from './accueil-patient/accueil-patient.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
     {path: "accueil_super_admin", component: AccueilSuperAdminComponent},
     { path: 'admin-medecins', component: AdminMedecinsComponent },
     { path: 'admin-reservations', component: AdminReservationsComponent },
+    { path: 'super-admin-centre', component: SuperAdminCentreComponent },
     { path: 'ajouter-medecin', component: AjouterMedecinComponent},
     { path: 'accueil-patient', component: AccueilPatientComponent},
     { path: 'prendre_rdv', component: PrendreRdvPatientComponent},

@@ -10,6 +10,14 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+    margin-top: 50px;
+  }
   
   mat-list {
     width: 60%;
@@ -41,4 +49,11 @@
     flex-shrink: 0;
     padding: 5px 15px;
   }
+
+  .admin-button {
+    padding: 10px 20px;
+    width: auto; 
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
   

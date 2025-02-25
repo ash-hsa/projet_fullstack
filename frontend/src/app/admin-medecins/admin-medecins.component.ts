@@ -42,6 +42,7 @@ export class AdminMedecinsComponent implements OnInit {
       'Content-Type': 'application/json'
     };
 
+
     this.http.get<any>(url, { headers }).subscribe({
       next: (user) => {
         this.adminConnecte = user;

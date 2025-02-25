@@ -23,12 +23,17 @@ export class LoginService {
         'Authorization': token
       }
     };
-    return this.httpClient.get<string>('/api/login', options).pipe(map(value => {
+    localStorage.setItem('authToken', token);
+    
+    let res = this.httpClient.get<string>('/api/public/login', options).pipe(map(value => {
       this.password = password;
       this.username = username;
-      console.log("Connected")
+      this.getrole().subscribe(value => {localStorage.setItem('role', value);});
     }))
+    
+    return res;
   }
+  
 
 
   getBasicAuthHeaderValue(): string {
@@ -37,6 +42,31 @@ export class LoginService {
 
   authHasBasic(): boolean {
     return !!this.password && !!this.username;
+  }
+
+  getrole(): Observable<string> {
+    let role="";
+    let options = {
+      headers: {
+      'Authorization': this.getBasicAuthHeaderValue()
+      }
+    };
+
+    return new Observable<string>(observer => {
+      this.httpClient.get<string>('/api/me', options).subscribe(value => {
+      let me: any = value;
+      if(me.sadmin){
+        observer.next("sadmin");
+      } else if(me.admin){
+        observer.next("admin");
+      } else {
+        observer.next("user");
+      }
+      observer.complete();
+      }, error => {
+      observer.error(error);
+      });
+    });
   }
 
   private createToken(username?: string, password?: string) {

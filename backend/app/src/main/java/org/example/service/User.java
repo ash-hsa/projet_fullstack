@@ -44,16 +44,18 @@ public class User {
     private String mail;
 
     public User() {
-        System.out.println("&&&&&&&&&&&&& VALEUR DE BASE : "+this.isAdmin());
     }
 
-    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
+    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin,boolean isAdmin, Integer addressId,String tel,String mail) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.isDoctor = isDoctor;
         this.isSAdmin = isSAdmin;
         this.addressId = addressId;
+        this.is_admin = isAdmin;
+        this.tel = tel;
+        this.mail = mail;
     }
 
     public Integer getId() { return id; }

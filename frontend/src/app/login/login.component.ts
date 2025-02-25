@@ -18,9 +18,19 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) {
   }
 
-  connect(): void {
+  connect(): void { 
     this.loginService.connect(this.user.pseudo, this.user.password).subscribe(value => {
-      this.router.navigate(["vaccination"])
+      let role=this.loginService.getrole();
+      role.subscribe(value => {
+        if(value=="sadmin"){
+          this.router.navigate(['/accueil-admin']); //route peut etre à changer une fois la page super admin faite
+        } else if(value=="admin"){
+          this.router.navigate(['/admin-medecins']);
+        } else {
+          this.router.navigate(['/accueil-patient']);
+        }
+      })
+      
     });
   }
 

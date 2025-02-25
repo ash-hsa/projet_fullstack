@@ -42,7 +42,7 @@ public class User {
 
     public User() {}
 
-    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, boolean isAdmin, Integer addressId) {
+    public User(Integer id, String name, String password, boolean isDoctor,  boolean isAdmin, boolean isSAdmin, Integer addressId) {
         this.id = id;
         this.name = name;
         this.password = password;

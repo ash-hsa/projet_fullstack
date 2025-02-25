@@ -5,6 +5,7 @@
 /backend/app/build
 /backend/app/bin
 /backend/app/lib
+**/application.yaml
 
 # Ignore IDE folder
 .idea

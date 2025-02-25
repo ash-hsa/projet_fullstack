@@ -62,41 +62,44 @@ public class UserRestController {
     }
 
     @PostMapping("/admin/users")
-public ResponseEntity<User> create(@RequestBody User user) throws URISyntaxException {
-    System.out.println("📥 JSON REÇU DU FRONT:");
-    System.out.println("➡️ Name: " + user.getName());
-    System.out.println("➡️ Password: " + user.getPassword());
-    System.out.println("➡️ isDoctor (AVANT): " + user.isDoctor());
+    public ResponseEntity<User> create(@RequestBody User user) throws URISyntaxException {
+        System.out.println("📥 JSON REÇU DU FRONT:");
+        System.out.println("➡️ Name: " + user.getName());
+        System.out.println("➡️ Password: " + user.getPassword());
+        System.out.println("➡️ isDoctor (AVANT): " + user.isDoctor());
+        System.out.println("➡️ isAdmin " + user.isAdmin());
+        System.out.println("➡️ isSAdmin " + user.isSAdmin());
 
-    // 🔹 Forcer la valeur de `isDoctor`
-    user.setDoctor(true);
-    user.setSAdmin(false);
+        // 🔹 Forcer la valeur de `isDoctor`
+        // user.setDoctor(true);
+        // user.setSAdmin(false);
+        // user.setAdmin(false);
 
-    System.out.println("🛠 MODIFICATION AVANT INSERTION:");
-    System.out.println("➡️ isDoctor (APRÈS SET): " + user.isDoctor());
+        System.out.println("🛠 MODIFICATION AVANT INSERTION:");
+        System.out.println("➡️ isDoctor (APRÈS SET): " + user.isDoctor());
 
-    // 🔹 Vérification avant de passer à `service.create`
-    if (user.isDoctor()) {
-        System.out.println("✅ isDoctor est bien TRUE avant insertion !");
-    } else {
-        System.out.println("❌ isDoctor est encore FALSE avant insertion !");
+        // 🔹 Vérification avant de passer à `service.create`
+        if (user.isDoctor()) {
+            System.out.println("✅ isDoctor est bien TRUE avant insertion !");
+        } else {
+            System.out.println("❌ isDoctor est encore FALSE avant insertion !");
+        }
+
+        service.create(user);
+        return ResponseEntity.created(new URI("user/" + user.getId())).build();
     }
 
-    service.create(user);
-    return ResponseEntity.created(new URI("user/" + user.getId())).build();
-}
 
+    @GetMapping("/me")
+    public ResponseEntity<User> getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
-@GetMapping("/me")
-public ResponseEntity<User> getCurrentUser() {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    String username = authentication.getName();
+        // Récupération de l'utilisateur depuis le service
+        User user = service.findByName(username);
 
-    // Récupération de l'utilisateur depuis le service
-    User user = service.findByName(username);
-
-    return ResponseEntity.ok(user);
-}
+        return ResponseEntity.ok(user);
+    }
 
 
 

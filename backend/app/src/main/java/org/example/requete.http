@@ -82,3 +82,37 @@ Content-Type: application/json
 
 GET http://localhost:8080/api/public/timeslots/1
 Content-Type: application/json
+
+###
+POST http://localhost:8080/api/admin/users
+Content-Type: application/json
+Authorization: Basic dG90bzp0YXRh
+
+{
+  "isDoctor" : true,
+  "isSAdmin" : true,
+  "isAdmin":true,
+  "id": 100,
+  "name": "test",
+  "password" : "test",
+  "tel":"07 07 07 07 07",
+  "mail":"JohnDoe@mail.com"
+}
+
+###
+
+POST http://localhost:8080/api/admin/users
+Content-Type: application/json
+Authorization: Basic dG90bzp0YXRh
+
+{
+  "name": "Jean Dupont",
+  "password": "password123",
+  "isDoctor": true,
+  "isAdmin": false,
+  "isSAdmin": false,
+  "addressId": 42,
+  "tel": "0612345678",
+  "mail": "jean.dupont@example.com"
+}
+

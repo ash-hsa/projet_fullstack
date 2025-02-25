@@ -1,5 +1,7 @@
 package org.example.service;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -23,12 +25,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "is_doctor", nullable = false)
-    private boolean isDoctor = true;  
+    @JsonProperty("isDoctor")
+    @Column(name = "is_doctor", nullable = true)
+    private boolean isDoctor;  
 
+    @JsonProperty("isAdmin")
+    @Column(name = "is_admin", nullable = true)
+    private boolean is_admin;
 
-    @Column(name = "is_s_admin", nullable = false)
-    private Boolean isSAdmin = false;
+    @JsonProperty("isSAdmin")
+    @Column(name = "is_s_admin", nullable = true)
+    private boolean isSAdmin;
 
     @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
     private Integer addressId;
@@ -36,7 +43,9 @@ public class User {
     private String tel;
     private String mail;
 
-    public User() {}
+    public User() {
+        System.out.println("&&&&&&&&&&&&& VALEUR DE BASE : "+this.isAdmin());
+    }
 
     public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
         this.id = id;
@@ -70,4 +79,8 @@ public class User {
 
     public String getTel() { return tel; }
     public void setTel(String tel) { this.tel = tel; }
+
+    public boolean isAdmin() { return is_admin; }
+    public void setAdmin(boolean isAdmin) { this.is_admin = isAdmin; }
+
 }

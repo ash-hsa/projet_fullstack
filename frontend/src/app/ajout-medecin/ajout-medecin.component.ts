@@ -19,8 +19,10 @@ export class AjouterMedecinComponent implements OnInit {
   medecin = {
     name: '',
     password: '',
+
     isDoctor: true,
     isSAdmin: false,
+    isAdmin: false,
     addressId: null  // 🟡 À remplir dynamiquement
   };
 

@@ -61,6 +61,7 @@ public class UserRestController {
         return ResponseEntity.ok("Médecin supprimé avec succès");
     }
 
+
     @PostMapping("/admin/users")
 public ResponseEntity<User> create(@RequestBody User user) throws URISyntaxException {
     System.out.println("📥 JSON REÇU DU FRONT:");
@@ -69,8 +70,9 @@ public ResponseEntity<User> create(@RequestBody User user) throws URISyntaxExcep
     System.out.println("➡️ isDoctor (AVANT): " + user.isDoctor());
 
     // 🔹 Forcer la valeur de `isDoctor`
-    user.setDoctor(true);
-    user.setSAdmin(false);
+     user.setDoctor(true);
+     user.setAdmin(false);
+     ser.setSAdmin(false);
 
     System.out.println("🛠 MODIFICATION AVANT INSERTION:");
     System.out.println("➡️ isDoctor (APRÈS SET): " + user.isDoctor());

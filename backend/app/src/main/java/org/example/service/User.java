@@ -26,9 +26,13 @@ public class User {
     @Column(name = "is_doctor", nullable = false)
     private boolean isDoctor = true;  
 
-
+    @Column(name = "is_admin", nullable = false)
+    private boolean isAdmin;
+    
     @Column(name = "is_s_admin", nullable = false)
-    private Boolean isSAdmin = false;
+    private boolean isSAdmin;
+
+
 
     @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
     private Integer addressId;
@@ -38,11 +42,12 @@ public class User {
 
     public User() {}
 
-    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, Integer addressId) {
+    public User(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, boolean isAdmin, Integer addressId) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.isDoctor = isDoctor;
+        this.isAdmin = isAdmin;
         this.isSAdmin = isSAdmin;
         this.addressId = addressId;
     }
@@ -58,6 +63,9 @@ public class User {
 
     public boolean isDoctor() { return isDoctor; }
     public void setDoctor(boolean doctor) { isDoctor = doctor; }
+
+    public boolean isAdmin() { return isAdmin; }
+    public void setAdmin(boolean Admin) { isAdmin = Admin; }
 
     public boolean isSAdmin() { return isSAdmin; }
     public void setSAdmin(boolean sAdmin) { isSAdmin = sAdmin; }

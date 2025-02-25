@@ -40,10 +40,13 @@ public class RdvRestController {
     }
 
     @PostMapping(path = "/api/public/timeslots")
-    public ResponseEntity<Patient> create(@RequestBody Rdv r) throws URISyntaxException{
-        service.create(r);
-        return ResponseEntity.created(new URI("/public/timeslots/"+r.getId())).build();
-    }
+        public ResponseEntity<Rdv> createRdv(@RequestBody Rdv rdv) {
+         System.out.println("📩 Requête POST reçue : " + rdv);
+         service.create(rdv);
+            return ResponseEntity.ok(rdv);
+}
+
+
 
     @DeleteMapping(path = "/api/public/timeslots/{id}")
     public void delete(@PathVariable("id") Integer id){

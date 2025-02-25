@@ -14,32 +14,81 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './ajout-medecin.component.scss'
 })
 export class AjouterMedecinComponent implements OnInit {
-  adminConnecte = { centerId: 1 }; // 🔹 Simule l'admin connecté (centre 1)
+  adminConnecte: any = {}; // 🟡 Stocke l'admin connecté dynamiquement
 
   medecin = {
     name: '',
     password: '',
-    is_doctor: true,
-    is_s_admin: false,
-    is_admin: false,
-    address_id: this.adminConnecte.centerId // 🔹 Fixe directement l'ID du centre
+
+    isDoctor: true,
+    isSAdmin: false,
+    isAdmin: false,
+    addressId: null  // 🟡 À remplir dynamiquement
   };
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    console.log("Admin connecté - Centre ID:", this.adminConnecte.centerId);
+    this.chargerAdminConnecte();
+  }
+
+  // 🟢 Récupère les infos de l'admin connecté
+  chargerAdminConnecte() {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+      console.error("❌ Erreur : Aucun token trouvé. Connecte-toi d'abord !");
+      return;
+    }
+
+    const headers = { 'Authorization': token };
+    
+    this.http.get<any>("http://localhost:8080/api/me", { headers }).subscribe({
+      next: (admin) => {
+        this.adminConnecte = admin;
+        this.medecin.addressId = admin.addressId; // 🟢 Dynamiser l'ID du centre
+        console.log("✅ Admin connecté :", admin);
+      },
+      error: (err) => {
+        console.error("❌ Erreur lors de la récupération de l'admin connecté :", err);
+      }
+    });
   }
 
   ajouterMedecin() {
-    console.log("Médecin envoyé :", this.medecin);
+    const url = "http://localhost:8080/api/admin/users"; 
+    const token = localStorage.getItem("authToken");
 
-    this.http.post('http://localhost:8080/api/medecins', this.medecin)
-      .subscribe(response => {
-        console.log("Médecin ajouté :", response);
-        this.router.navigate(['/admin-medecins']); 
-      }, error => {
-        console.error("Erreur lors de l'ajout", error);
-      });
-}
+    if (!token) {
+        console.error("❌ Erreur : Pas de token trouvé. Connecte-toi d'abord !");
+        return;
+    }
+
+    // 🟢 Construire dynamiquement l'objet médecin
+    const nouveauMedecin = {
+        name: this.medecin.name,
+        password: this.medecin.password || "defaultpass",
+        isDoctor: true,
+        isSAdmin: false,
+        addressId: this.medecin.addressId // 🟢 Dynamique selon l'admin connecté
+    };
+
+    console.log("📤 Données envoyées :", JSON.stringify(nouveauMedecin, null, 2));
+
+    const headers = {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+    };
+
+    this.http.post(url, nouveauMedecin, { headers }).subscribe({
+        next: (response) => {
+            console.log("✅ Médecin ajouté avec succès :", response);
+            alert("Médecin ajouté !");
+            this.router.navigate(['/admin-medecins']);
+        },
+        error: (err) => {
+            console.error("❌ Erreur lors de l’ajout du médecin:", err);
+        }
+    });
+  }
 }

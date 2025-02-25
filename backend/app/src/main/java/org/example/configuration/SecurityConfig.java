@@ -15,17 +15,15 @@ public class SecurityConfig {
         return http
             .csrf(csrf -> csrf.disable()) // Désactive CSRF (utile pour les tests d'API)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/public/**").permitAll() // Autorise certains endpoints
+                .requestMatchers("/api/public/**").permitAll() // ✅ Autoriser tous les endpoints publics
                 .anyRequest().authenticated() // Auth obligatoire pour le reste
             )
             .httpBasic(httpBasic -> {}) // Active Basic Auth
             .build();
-
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // NoOpPasswordEncoder pour les tests (ne pas utiliser en prod)
-        return NoOpPasswordEncoder.getInstance();
+        return NoOpPasswordEncoder.getInstance(); // NoOp pour les tests (PAS EN PROD)
     }
 }

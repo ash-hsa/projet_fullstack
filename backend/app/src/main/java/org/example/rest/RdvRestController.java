@@ -50,6 +50,29 @@ public class RdvRestController {
         service.removeOne(id);
     }
 
+    @GetMapping(path = "/api/public/timeslots/patient/{id}")
+        public List<Rdv> getRdvByPatient(@PathVariable("id") Integer id) throws PatientNotFoundException {
+            System.out.println("Recherche des RDV pour le patient ID : " + id);
+
+    // Vérifier si le patient existe
+            Patient patient = service.findPatientById(id);
+
+    // Récupérer les RDV du patient
+         List<Rdv> rdvs = service.findAllforPatient(patient);
+
+    // Afficher les résultats pour debug
+            for (Rdv rdv : rdvs) {
+               System.out.println("RDV trouvé : " + rdv.getId() + " - Date : " + rdv.getDate());
+               System.out.println("Patient : " + (rdv.getPatient() != null ? rdv.getPatient().getName() : "NULL"));
+              System.out.println("Docteur : " + (rdv.getDocteur() != null ? rdv.getDocteur().getName() : "NULL"));
+              System.out.println("Centre : " + (rdv.getCenter() != null ? rdv.getCenter().getName() : "NULL"));
+         }
+
+            return rdvs;
+        }
+
+
+
 
     @ExceptionHandler
     public ResponseEntity<String> handle(PatientNotFoundException ex){

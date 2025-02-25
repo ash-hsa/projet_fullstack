@@ -3,6 +3,7 @@ package org.example.service;
 import java.util.Date;
 import java.util.List;
 
+import org.example.exception.PatientNotFoundException;
 import org.example.exception.RdvNotFoundException;
 import org.example.repository.PatientRepository;
 import org.example.repository.RdvRepository;
@@ -26,10 +27,10 @@ public class RdvService {
         return rdvRepository.findByDate(date);
     }
 
-    //Find list rdv of a patient
     public List<Rdv> findAllforPatient(Patient patient){
         return rdvRepository.findByPatient(patient);
     }
+    
 
     public Rdv findOne(Integer id) throws RdvNotFoundException{
         return rdvRepository.findById(id)
@@ -43,4 +44,12 @@ public class RdvService {
     public void removeOne(Integer id){
         rdvRepository.deleteById(id);
     }
+
+    @Autowired
+    private PatientService patientService; // Injecter le service Patient
+
+    public Patient findPatientById(Integer id) throws PatientNotFoundException {
+    return patientService.findOne(id);
+}
+
 }

@@ -1,11 +1,12 @@
 <h2 class="title">Bienvenue sur votre espace patient</h2>
 
-<!-- Section Rendez-vous -->
 <div class="section">
   <h3>📅 Mes rendez-vous à venir</h3>
   <mat-list *ngIf="rendezVous.length > 0; else noRdv">
     <mat-list-item *ngFor="let rdv of rendezVous" class="list-item">
-      <span class="rdv-info">Centre : {{ rdv.centre }} - Date : {{ rdv.date }}</span>
+      <span class="rdv-info">
+        🏥 Centre : {{ rdv.center.name }} - 🩺 Docteur : {{ rdv.docteur.name }} - 📅 Date : {{ rdv.date | date:'dd/MM/yyyy HH:mm' }}
+      </span>
       <button mat-raised-button color="warn" class="annuler-button" (click)="annulerRendezVous(rdv)">
         Annuler
       </button>
@@ -15,6 +16,7 @@
     <p>Aucun rendez-vous à venir.</p>
   </ng-template>
 </div>
+
 
 <!-- Section Prendre un rendez-vous -->
 <div class="section">

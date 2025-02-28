@@ -23,11 +23,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "is_doctor")
-    private boolean isDoctor;
+    @Column(name = "is_doctor", nullable = false)
+    private boolean isDoctor = true;  
 
-    @Column(name = "is_s_admin")
-    private boolean isSAdmin;
+
+    @Column(name = "is_s_admin", nullable = false)
+    private Boolean isSAdmin = false;
 
     @Column(name = "address_id") // 🔹 Ajout de l'attribut pour le centre de vaccination
     private Integer addressId;

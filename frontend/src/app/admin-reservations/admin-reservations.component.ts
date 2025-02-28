@@ -5,12 +5,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-admin-reservations',
   standalone: true,
-  imports: [MatListModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,CommonModule],
+  imports: [MatListModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,CommonModule,RouterModule],
   templateUrl: './admin-reservations.component.html',
   styleUrls: ['./admin-reservations.component.scss']
 })

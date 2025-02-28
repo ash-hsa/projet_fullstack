@@ -5,25 +5,24 @@
     margin-top: 50px;
   }
   
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  
   .list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; 
-    margin-top: 50px;
-  }
   
   mat-list {
-    width: 60%;
-    max-width: 600px;
+    width: 50%;
+    max-width: 400px; /* ✅ Pour éviter que la liste soit trop large */
     background: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -33,27 +32,18 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 10px 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
   }
   
-  .rdv-info {
+  .centre-name {
     font-size: 1.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .annuler-button {
-    margin-left: 20px;
-    flex-shrink: 0;
-    padding: 5px 15px;
   }
 
-  .admin-button {
+  .super-admin-button {
     padding: 10px 20px;
     width: auto; 
     font-size: 1.2rem;
     white-space: nowrap;
-}
+  }
+  
   

@@ -9,3 +9,31 @@
     font-size: 7vh;    
     text-align: center;
 }
+
+.mat-toolbar {
+    padding-right: 0;
+}
+
+.spacer {
+    flex-grow: 1;
+  }
+
+.tool-button{
+    $bg-color: #3f51b5;
+    margin: 0; 
+    font-family: inherit;
+    font-size: inherit;
+    background-color: darken($bg-color, 10%) ; 
+    border: none ;
+    box-shadow: none ; 
+    color: inherit; 
+    height: 100%;
+    width: auto;
+    padding: 0px 20px;
+    border-left: 1px solid $bg-color; 
+}
+
+.tool-button .last {
+    $bg-color: #3f51b5; 
+    border-right: 2px solid darken($bg-color, 20%);
+}

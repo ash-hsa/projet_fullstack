@@ -1,5 +1,15 @@
 <mat-toolbar color="primary" >
     <span>{{ title }}</span>
+    <span class="spacer"></span> <!-- Pousse les boutons à droite -->
+    <button class="tool-button" routerLink="/accueil">
+        Accueil
+    </button>
+    <button class="tool-button" routerLink="/accueil_admin">
+        Accueil-Administrateur
+    </button>
+    <button class="tool-button last" routerLink="/accueil_super_admin">
+        Accueil-Super-Administrateur
+    </button>
 </mat-toolbar>
 
 

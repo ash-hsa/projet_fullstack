@@ -84,6 +84,7 @@ GET http://localhost:8080/api/public/timeslots/1
 Content-Type: application/json
 
 ###
+
 POST http://localhost:8080/api/admin/users
 Content-Type: application/json
 Authorization: Basic dG90bzp0YXRh
@@ -115,4 +116,3 @@ Authorization: Basic dG90bzp0YXRh
   "tel": "0612345678",
   "mail": "jean.dupont@example.com"
 }
-

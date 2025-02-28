@@ -34,6 +34,14 @@ public class Rdv {
 
     public Rdv() {}
 
+    public Rdv(int id, Date date, Patient patient, User docteur, Center center) {
+        this.id = id;
+        this.date = date;
+        this.patient = patient;
+        this.docteur = docteur;
+        this.center = center;
+    }
+
     public Integer getId() {
         return id;
     }

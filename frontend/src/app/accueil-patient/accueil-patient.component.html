@@ -20,7 +20,7 @@
 
 <!-- Section Prendre un rendez-vous -->
 <div class="section">
-    <button mat-raised-button color="primary" routerLink="/prendre_rdv">
+    <button mat-raised-button color="primary" routerLink="/prendre-rdv">
         ➕ Prendre un nouveau rendez-vous
     </button>
       
@@ -30,8 +30,8 @@
 <div class="section">
   <h3>👤 Mon profil</h3>
   <p><strong>Nom :</strong> {{ patient.nom }}</p>
-  <p><strong>Email :</strong> {{ patient.email }}</p>
-  <p><strong>Téléphone :</strong> {{ patient.telephone }}</p>
+  <p><strong>Email :</strong> {{ patient.mail }}</p>
+  <p><strong>Téléphone :</strong> {{ patient.tel }}</p>
   <button mat-raised-button color="accent" routerLink="/modifier_profil_patient">
     ✏️ Modifier mes informations
   </button>

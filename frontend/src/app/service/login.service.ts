@@ -83,6 +83,9 @@ export class LoginService {
     this.username = undefined;
     localStorage.setItem('authToken', "");
     localStorage.setItem('role', "");
+      localStorage.setItem('name', "");
+      localStorage.setItem('tel', "");
+      localStorage.setItem('mail', "");
     
     this.isLoggedSubject.next(false);
     this.router.navigateByUrl("/login").then(console.log).catch(console.error)

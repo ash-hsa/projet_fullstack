@@ -31,6 +31,10 @@ export class AdminMedecinsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    if(localStorage.getItem("role")=="user"){
+      console.log("Accès refusé");
+      window.location.href = '/accueil-patient';
+    }
     this.getAdminConnecte(); // 🔹 Récupère l’admin connecté avant de charger les médecins
   }
 

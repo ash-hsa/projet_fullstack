@@ -13,7 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { VaccinationCenter } from '../vaccination-center';
 import { VaccinationService } from '../service/vaccination.service';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-prendre-rdv-patient',
@@ -33,7 +33,9 @@ export class PrendreRdvPatientComponent implements OnInit {
   selectedDate?: any;
   selectedHeure?: string;
 
-  constructor(private vaccinationService: VaccinationService) {}
+  constructor(private vaccinationService: VaccinationService, private http: HttpClient,) {}
+  patientId = -1; 
+  doctorID = -1;
 
   ngOnInit(): void {
     // Récupérer la liste des centres via l'API
@@ -58,31 +60,56 @@ export class PrendreRdvPatientComponent implements OnInit {
   }
 
   validerRendezVous() {
-    if (!this.selectedCentre || !this.selectedDate || !this.selectedHeure) {
-      alert('Veuillez remplir tous les champs ❌');
-      return;
-    }
+    
 
-    // 📅 Formatage correct de la date
-    const formattedDate = this.formatDateToBackend(new Date(this.selectedDate), this.selectedHeure);
+    this.http.get<any[]>(`http://localhost:8080/api/public/patients?name=${localStorage.getItem("name")}`).subscribe(data => {
+      if (!this.selectedCentre || !this.selectedDate || !this.selectedHeure) {
+        alert('Veuillez remplir tous les champs ❌');
+        return;
+      }
+      if(data.length == 1) {
+        this.patientId = data[0].id;
+      }
+      this.http.get<any[]>(`http://localhost:8080/api/public/center/${this.selectedCentre.id +1}/doctors`).subscribe(data => {
+        if (!this.selectedCentre || !this.selectedDate || !this.selectedHeure) {
+          alert('Veuillez remplir tous les champs ❌');
+          return;
+        }
+        if(data.length == 1) {
+          this.doctorID = data[0].id;
+        }
+        console.log("Doctor ID :", this.doctorID);// ✅ Vérifier les données reçues
 
-    // 📤 Objet rendez-vous à envoyer au backend
-    const rendezVous = {
-      date: formattedDate, // ✅ Date au bon format "yyyy-MM-dd HH:mm:ss"
-      patient: { id: 1 }, // 🔥 ID du patient en dur (à dynamiser plus tard)
-      docteur: { id: 2 }, // 🔥 ID du docteur (à dynamiser plus tard)
-      center: { id: this.selectedCentre.id }
-    };
 
-    console.log("📤 Envoi du RDV :", rendezVous);
+        // 📅 Formatage correct de la date
+        const formattedDate = this.formatDateToBackend(new Date(this.selectedDate), this.selectedHeure);
 
-    // 🔄 Envoi de la requête au backend
-    this.vaccinationService.prendreRendezVous(rendezVous).subscribe(response => {
-      console.log("✅ Réponse API :", response);
-      alert('Rendez-vous confirmé ✅');
-    }, error => {
-      console.error("❌ Erreur API :", error);
-      alert('Erreur lors de la prise de rendez-vous ❌');
+        // 📤 Objet rendez-vous à envoyer au backend
+        const rendezVous = {
+          date: formattedDate, // ✅ Date au bon format "yyyy-MM-dd HH:mm:ss"
+          patient: { id: this.patientId  }, 
+          docteur: { id: this.doctorID },
+          center: { id: this.selectedCentre.id }
+        };
+
+        console.log("📤 Envoi du RDV :", rendezVous);
+
+        // 🔄 Envoi de la requête au backend
+        this.vaccinationService.prendreRendezVous(rendezVous).subscribe(response => {
+          console.log("✅ Réponse API :", response);
+          alert('Rendez-vous confirmé ✅');
+        }, error => {
+          console.error("❌ Erreur API :", error);
+          alert('Erreur lors de la prise de rendez-vous ❌');
+        });
+
+
+
+      });
+
     });
+    
+
+    
   }
 }

@@ -21,6 +21,13 @@ export class AdminReservationsComponent {
     { patient: 'Claire Martin', date: '16/02/2024' }
   ];
 
+  NgOnInit() {
+    if(localStorage.getItem("role")=="user"){
+      console.log("Accès refusé");
+      window.location.href = '/accueil-patient';
+    }
+  }
+
   annulerRendezVous(rdv: any) {
     this.rendezVous = this.rendezVous.filter(r => r !== rdv);
   }

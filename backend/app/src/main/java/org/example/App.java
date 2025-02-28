@@ -1,12 +1,18 @@
 package org.example;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.example.repository.CenterRepository;
+import org.example.repository.PatientRepository;
+import org.example.repository.RdvRepository;
 import org.example.repository.UserRepository;
 import org.example.repository.AddressRepository;
 import org.example.service.Address;
 import org.example.service.Center;
+import org.example.service.Patient;
+import org.example.service.Rdv;
 import org.example.service.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +31,12 @@ public class App implements CommandLineRunner {
 
     @Autowired
     private AddressRepository AddressRepository;
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private RdvRepository rdvRepository;
 
     public static void getGreeting(){
         System.out.println("L'Application se lance!");
@@ -59,6 +71,20 @@ public class App implements CommandLineRunner {
         return center;
     }
 
+    private Patient createPatient(Integer id, String nom, Date birthDate, boolean is_vaccinated, Address address) {
+        //Create a patient
+        Patient patient = new Patient(id,nom,birthDate,is_vaccinated,address);
+        patientRepository.save(patient);
+        return patient;
+    }
+
+    private Rdv createRDV(Integer id, Date date, Patient patient, User doctor, Center center) {
+        //Create a patient
+        Rdv rdv = new Rdv(id,date,patient,doctor,center);
+        rdvRepository.save(rdv);
+        return rdv;
+    }
+
 
 
     
@@ -84,11 +110,21 @@ public class App implements CommandLineRunner {
         User admin = createUser(2, "Admin", "admin", false, false, true, 1,"admin@mail.com", "0600000000");
         User user = createUser(3, "User", "user", false, false, false, 1,"user@mail.com","0100000000");
         User Doctor = createUser(4, "Doctor", "doctor", true, false, false, 1,"doctor@mail.com","0200000000");
-
+        User Patient = createUser(5, "Patient", "patient", false, false, false, 1,"Patient@mail.com","0300000000");
+        User admin2 = createUser(6, "Admin2", "admin2", false, false, true, 1,"ADmin2@mail.com", "0400000000");
+        User Doctor2 = createUser(7, "Doctor2", "doctor2", true, false, false, 1,"doctor2@mail.com","0500000000");
         // 🔹 Création du Centre avec admins et docteurs
         Center center = createCenter("Centre Paix", address0, List.of(admin), List.of(Doctor));
-        // createCenter("Centre Elysées", address1, List.of(admin), List.of(Doctor));
+        createCenter("Centre Elysées", address1, List.of(admin2), List.of(Doctor2));
         // createCenter("Centre Haussmann", address2, List.of(admin), List.of(Doctor));
+
+        // 🔹 Création de patients
+        Patient patient = createPatient(1, "Patient", new Date(), false, address5);
+
+
+        // 🔹 Création de RDV
+
+        Rdv rdv = createRDV(1, new Date(), patient, Doctor, center);
 
         
 

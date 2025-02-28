@@ -1,14 +1,11 @@
 <mat-toolbar color="primary" >
     <span>{{ title }}</span>
     <span class="spacer"></span> <!-- Pousse les boutons à droite -->
-    <button class="tool-button" routerLink="/accueil">
+    <button mat-raised-button color="primary" class="tool-button" (click)="to_accueil()">
         Accueil
     </button>
-    <button class="tool-button" routerLink="/accueil_admin">
-        Accueil-Administrateur
-    </button>
-    <button class="tool-button last" routerLink="/accueil_super_admin">
-        Accueil-Super-Administrateur
+    <button class="tool-button" (click)="logout()">
+        logout
     </button>
 </mat-toolbar>
 

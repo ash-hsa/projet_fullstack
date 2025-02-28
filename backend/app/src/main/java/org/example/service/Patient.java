@@ -25,10 +25,12 @@ public class Patient {
 
     public Patient(){}
 
-    public Patient(Integer id, String name, Date birthDate) {
+    public Patient(Integer id, String name, Date birthDate,boolean is_vaccinated, Address address) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
+        this.is_vaccinated = is_vaccinated;
+        this.address = address;
     }
     
     public Integer getId() {

@@ -28,9 +28,8 @@ export class LoginService {
     let res = this.httpClient.get<string>('/api/public/login', options).pipe(map(value => {
       this.password = password;
       this.username = username;
-      this.getrole().subscribe(value => {localStorage.setItem('role', value);});
+      this.getinfos();
     }))
-    
     return res;
   }
   
@@ -44,29 +43,31 @@ export class LoginService {
     return !!this.password && !!this.username;
   }
 
-  getrole(): Observable<string> {
-    let role="";
+  getinfos(): Observable<any> {
     let options = {
       headers: {
-      'Authorization': this.getBasicAuthHeaderValue()
+        'Authorization': this.getBasicAuthHeaderValue()
       }
     };
-
-    return new Observable<string>(observer => {
-      this.httpClient.get<string>('/api/me', options).subscribe(value => {
-      let me: any = value;
+  
+    return this.httpClient.get<any>('/api/me', options).pipe(map(me => {
+      let res = {"role":"", "name":"", "tel":"", "mail":""};
       if(me.sadmin){
-        observer.next("sadmin");
+        res["role"]="sadmin";
       } else if(me.admin){
-        observer.next("admin");
+        res["role"]="admin";
       } else {
-        observer.next("user");
+        res["role"]="user";
       }
-      observer.complete();
-      }, error => {
-      observer.error(error);
-      });
-    });
+      res["name"]=me.name;
+      res["tel"]=me.tel;
+      res["mail"]=me.mail;
+      localStorage.setItem('role', res["role"]);
+      localStorage.setItem('name', res["name"]);
+      localStorage.setItem('tel', res["tel"]);
+      localStorage.setItem('mail', res["mail"]);
+      return res;
+    }));
   }
 
   private createToken(username?: string, password?: string) {
@@ -80,6 +81,8 @@ export class LoginService {
     
     this.password = undefined;
     this.username = undefined;
+    localStorage.setItem('authToken', "");
+    localStorage.setItem('role', "");
     
     this.isLoggedSubject.next(false);
     this.router.navigateByUrl("/login").then(console.log).catch(console.error)

@@ -13,6 +13,7 @@ export class AccueilAdminComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    console.log(localStorage.getItem('role'));
     if(localStorage.getItem("role")=="user"){
       console.log("Accès refusé");
       window.location.href = '/accueil-patient';

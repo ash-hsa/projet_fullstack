@@ -20,18 +20,16 @@ export class LoginComponent {
 
   connect(): void { 
     this.loginService.connect(this.user.pseudo, this.user.password).subscribe(value => {
-      let role=this.loginService.getrole();
-      role.subscribe(value => {
-        if(value=="sadmin"){
-          this.router.navigate(['/accueil-admin']); //route peut etre à changer une fois la page super admin faite
-        } else if(value=="admin"){
-          this.router.navigate(['/admin-medecins']);
-        } else {
+      let infos=this.loginService.getinfos().subscribe(value => {
+        if(value.role=="Sadmin"){
+          this.router.navigate(['/accueil-admin']);
+        } else if(value.role=="admin"){
+          this.router.navigate(['/accueil-admin']);
+        }
+        else{
           this.router.navigate(['/accueil-patient']);
         }
-      })
-      
     });
+  });
   }
-
 }

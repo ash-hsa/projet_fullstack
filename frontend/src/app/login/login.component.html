@@ -19,7 +19,7 @@
               <input matInput [(ngModel)]="user.password" name="password" type="password" required>
             </mat-form-field><br>
           
-            <button mat-raised-button color="primary" type="submit" class="custom-button">Se connecter</button>
+            <button (click)="connect()" mat-raised-button color="primary" type="submit" class="custom-button">Se connecter</button>
         </form>
 
     </div>

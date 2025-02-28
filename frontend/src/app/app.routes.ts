@@ -16,20 +16,20 @@ import { ModifierProfilPatientComponent} from './modifier-profil-patient/modifie
 
 
 export const routes: Routes = [
-    {path : "login", component: LoginComponent},
-    {path: "centers", component: VaccinationCenterListComponent},
-    {path : "centers/detail/:id", component: VaccinationCenterComponent},
-    {path: "accueil", component: AccueilComponent},
-    {path: "accueil_admin", component: AccueilAdminComponent},
-    {path: "accueil_super_admin", component: AccueilSuperAdminComponent},
+    { path : "login", component: LoginComponent },
+    { path: "centers", component: VaccinationCenterListComponent },
+    { path : "centers/detail/:id", component: VaccinationCenterComponent },
+    { path: "accueil", component: AccueilComponent },
+    { path: "accueil-super-admin", component: AccueilSuperAdminComponent },
+    { path: "accueil-admin", component: AccueilAdminComponent },
     { path: 'admin-medecins', component: AdminMedecinsComponent },
     { path: 'admin-reservations', component: AdminReservationsComponent },
     { path: 'super-admin-centre', component: SuperAdminCentreComponent },
     { path: 'super-admin-gestion-admin', component: SuperAdminGestionAdminComponent },
     { path: 'ajouter-medecin', component: AjouterMedecinComponent},
     { path: 'accueil-patient', component: AccueilPatientComponent},
-    { path: 'prendre_rdv', component: PrendreRdvPatientComponent},
-    { path: 'modifier_profil_patient', component: ModifierProfilPatientComponent},
+    { path: 'prendre-rdv', component: PrendreRdvPatientComponent},
+    { path: 'modifier-profil-patient', component: ModifierProfilPatientComponent},
     
     
 

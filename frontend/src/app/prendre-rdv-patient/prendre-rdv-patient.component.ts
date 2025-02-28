@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {  VaccinationCenter } from '../vaccination-center';
-import {  VaccinationService } from '../service/vaccination.service';
+import { VaccinationCenter } from '../vaccination-center';
+import { VaccinationService } from '../service/vaccination.service';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -42,12 +42,47 @@ export class PrendreRdvPatientComponent implements OnInit {
     });
   }
 
+  // 🛠️ Fonction pour formater la date au format "yyyy-MM-dd HH:mm:ss"
+  formatDateToBackend(date: Date, heure: string): string {
+    const [hours, minutes] = heure.split(':').map(Number);
+    date.setHours(hours, minutes, 0, 0);
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minute = String(date.getMinutes()).padStart(2, '0');
+    const second = "00"; // Fixe les secondes à 00
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+  }
+
   validerRendezVous() {
-    if (this.selectedCentre && this.selectedDate && this.selectedHeure) {
-      console.log(`Rendez-vous pris à ${this.selectedCentre.name} (${this.selectedCentre.address.street}, ${this.selectedCentre.address.city}) le ${this.selectedDate} à ${this.selectedHeure}`);
-      alert('Rendez-vous confirmé ✅');
-    } else {
+    if (!this.selectedCentre || !this.selectedDate || !this.selectedHeure) {
       alert('Veuillez remplir tous les champs ❌');
+      return;
     }
+
+    // 📅 Formatage correct de la date
+    const formattedDate = this.formatDateToBackend(new Date(this.selectedDate), this.selectedHeure);
+
+    // 📤 Objet rendez-vous à envoyer au backend
+    const rendezVous = {
+      date: formattedDate, // ✅ Date au bon format "yyyy-MM-dd HH:mm:ss"
+      patient: { id: 1 }, // 🔥 ID du patient en dur (à dynamiser plus tard)
+      docteur: { id: 2 }, // 🔥 ID du docteur (à dynamiser plus tard)
+      center: { id: this.selectedCentre.id }
+    };
+
+    console.log("📤 Envoi du RDV :", rendezVous);
+
+    // 🔄 Envoi de la requête au backend
+    this.vaccinationService.prendreRendezVous(rendezVous).subscribe(response => {
+      console.log("✅ Réponse API :", response);
+      alert('Rendez-vous confirmé ✅');
+    }, error => {
+      console.error("❌ Erreur API :", error);
+      alert('Erreur lors de la prise de rendez-vous ❌');
+    });
   }
 }

@@ -26,4 +26,9 @@ export class VaccinationService {
   getCenterById(id: Number) : Observable<VaccinationCenter>{
     return this.http.get<VaccinationCenter>("api/public/center/"+id);
   }
+
+  prendreRendezVous(rendezVous: any): Observable<any> {
+    return this.http.post<any>("http://localhost:8080/api/public/timeslots", rendezVous);
+  }
+  
 }

@@ -1,44 +1,67 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms'; 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router';
-
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-patient-accueil',
   standalone: true,
-  imports: [FormsModule,MatListModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,CommonModule,RouterModule], 
+  imports: [
+    CommonModule, 
+    HttpClientModule, 
+    FormsModule, 
+    MatListModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    RouterModule
+  ], 
   templateUrl: './accueil-patient.component.html',
   styleUrl: './accueil-patient.component.scss'
 })
-export class AccueilPatientComponent {
-  patient = {
-    nom: 'Jean Dupont',
-    email: 'jean.dupont@mail.com',
-    telephone: '06 12 34 56 78'
-  };
 
-  rendezVous = [
-    { centre: 'Centre X', date: '15/02/2024' },
-    { centre: 'Centre Y', date: '20/03/2024' }
-  ];
+export class AccueilPatientComponent implements OnInit { 
+  patientId = 1; // ID du patient en dur pour l’instant
+  rendezVous: any[] = [];
+  patient: any = {}; // ✅ Ajout de patient
+
+
+  constructor(private http: HttpClient) {}
+
+
+  ngOnInit(): void {
+    this.loadPatient();
+    this.loadRendezVous();
+
+  }
+
+  // ✅ Récupération du patient
+  loadPatient() {
+    this.http.get<any>(`http://localhost:8080/api/public/patient/${this.patientId}`)
+      .subscribe(data => {
+        this.patient = data;
+      });
+  }
+
+  loadRendezVous() {
+    this.http.get<any[]>(`http://localhost:8080/api/public/timeslots/patient/${this.patientId}`)
+      .subscribe(data => {
+        console.log("RDV récupérés :", data); // ✅ Vérifier les données reçues
+        this.rendezVous = data;
+      });
+  }
+  
 
   annulerRendezVous(rdv: any) {
     this.rendezVous = this.rendezVous.filter(item => item !== rdv);
-  }
-
-  prendreRendezVous() {
-    console.log("Redirection vers la prise de RDV");
-    
-  }
-
-  modifierProfil() {
-    console.log("Redirection vers la modification du profil");
-    
   }
 }

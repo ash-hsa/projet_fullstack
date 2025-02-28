@@ -28,6 +28,14 @@ public class Center {
 
     public Center( ){}
 
+    
+    public Center(String name, Address address, List<User> admins, List<User> doctors) {
+        this.name = name;
+        this.address = address;
+        this.admins = admins;
+        this.doctors = doctors;
+    }
+
     public Integer getId() {
         return id;
     }

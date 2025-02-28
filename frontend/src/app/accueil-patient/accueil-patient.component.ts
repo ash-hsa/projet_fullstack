@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-patient-accueil',
@@ -27,16 +28,20 @@ import { RouterModule } from '@angular/router';
   templateUrl: './accueil-patient.component.html',
   styleUrl: './accueil-patient.component.scss'
 })
+
 export class AccueilPatientComponent implements OnInit { 
   patientId = 1; // ID du patient en dur pour l’instant
   rendezVous: any[] = [];
   patient: any = {}; // ✅ Ajout de patient
 
+
   constructor(private http: HttpClient) {}
+
 
   ngOnInit(): void {
     this.loadPatient();
     this.loadRendezVous();
+
   }
 
   // ✅ Récupération du patient

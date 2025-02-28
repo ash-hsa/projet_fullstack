@@ -18,10 +18,18 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) {
   }
 
-  connect(): void {
+  connect(): void { 
     this.loginService.connect(this.user.pseudo, this.user.password).subscribe(value => {
-      this.router.navigate(["vaccination"])
+      let infos=this.loginService.getinfos().subscribe(value => {
+        if(value.role=="Sadmin"){
+          this.router.navigate(['/accueil-admin']);
+        } else if(value.role=="admin"){
+          this.router.navigate(['/accueil-admin']);
+        }
+        else{
+          this.router.navigate(['/accueil-patient']);
+        }
     });
+  });
   }
-
 }

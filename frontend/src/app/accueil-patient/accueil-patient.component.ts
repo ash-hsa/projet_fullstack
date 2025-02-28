@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router';
+import { LoginService } from '../service/login.service';
 
 
 @Component({
@@ -18,9 +19,9 @@ import { RouterModule } from '@angular/router';
 })
 export class AccueilPatientComponent {
   patient = {
-    nom: 'Jean Dupont',
-    email: 'jean.dupont@mail.com',
-    telephone: '06 12 34 56 78'
+    nom:"",
+    email:"",
+    telephone:""
   };
 
   rendezVous = [
@@ -28,6 +29,18 @@ export class AccueilPatientComponent {
     { centre: 'Centre Y', date: '20/03/2024' }
   ];
 
+
+  constructor(private loginService: LoginService,) {
+    }
+
+  ngOnInit() {
+    let res = this.loginService.getinfos().subscribe(value => {
+      this.patient.nom = value.name;
+      this.patient.email = value.mail;
+      this.patient.telephone = value.tel;
+    });
+  }
+  
   annulerRendezVous(rdv: any) {
     this.rendezVous = this.rendezVous.filter(item => item !== rdv);
   }

@@ -39,13 +39,15 @@ public class UserService implements UserDetailsService{
         System.out.println("➡️ Name: " + p.getName());
         System.out.println("➡️ Password: " + p.getPassword());
         System.out.println("➡️ isDoctor (REÇU PAR SERVICE): " + p.isDoctor());
+        System.out.println("is_admin recu par service: " + p.isAdmin());
+        System.out.println("is_s_admin recu par service: " + p.isSAdmin());
     
         // 🔹 Ajoute une vérification de sécurité pour éviter null
-        if (p.isDoctor() == false) {
-            System.out.println("❌ ATTENTION : isDoctor est encore FALSE dans le Service !");
-            p.setDoctor(true);
-            System.out.println("🔄 Correction dans UserService : isDoctor est maintenant TRUE !");
-        }
+        // if (p.isDoctor() == false) {
+        //     System.out.println("❌ ATTENTION : isDoctor est encore FALSE dans le Service !");
+        //     p.setDoctor(true);
+        //     System.out.println("🔄 Correction dans UserService : isDoctor est maintenant TRUE !");
+        // }
     
         userRepository.save(p);
     }

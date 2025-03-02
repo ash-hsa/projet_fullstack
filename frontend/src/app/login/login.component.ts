@@ -21,8 +21,9 @@ export class LoginComponent {
   connect(): void { 
     this.loginService.connect(this.user.pseudo, this.user.password).subscribe(value => {
       let infos=this.loginService.getinfos().subscribe(value => {
-        if(value.role=="Sadmin"){
-          this.router.navigate(['/accueil-admin']);
+        console.log(value);
+        if(value.role=="sadmin"){
+          this.router.navigate(['/accueil-super-admin']);
         } else if(value.role=="admin"){
           this.router.navigate(['/accueil-admin']);
         }

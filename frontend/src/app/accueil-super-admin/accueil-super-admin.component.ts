@@ -11,4 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AccueilSuperAdminComponent {
 
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    if(localStorage.getItem('role') != "sadmin"){
+      alert('Vous devez être connecté en tant que super-administrateur pour accéder à cette page !');
+      window.location.href = '/login';
+    }
+  }
 }

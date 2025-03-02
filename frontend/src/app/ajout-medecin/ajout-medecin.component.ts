@@ -27,7 +27,11 @@ export class AjouterMedecinComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    this.chargerAdminConnecte();
+    if(localStorage.getItem('role') == "user"){
+      alert('Vous devez être connecté en tant qu\'administrateur pour accéder à cette page !');
+      window.location.href = '/login';
+    }
+    this.chargerAdminConnecte()
   }
 
   // 🟢 Récupère les infos de l'admin connecté

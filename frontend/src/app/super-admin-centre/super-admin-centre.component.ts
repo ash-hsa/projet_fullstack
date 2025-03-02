@@ -31,76 +31,29 @@ export class SuperAdminCentreComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getAdminConnecte(); // 🔹 Récupère l’admin connecté avant de charger les centres
-  }
-
-  getAdminConnecte() {
-    const url = 'http://localhost:8080/api/me'; // 🔹 Endpoint pour récupérer l'utilisateur connecté
-
-    const headers = {
-      'Authorization': localStorage.getItem("authToken") || "", // 🔐 Ajoute le token
-      'Content-Type': 'application/json'
-    };
-
-    this.http.get<any>(url, { headers }).subscribe({
-      next: (user) => {
-        this.adminConnecte = user;
-        console.log("✅ Admin connecté :", user);
-        
-        if (this.adminConnecte.addressId) {
-          this.chargerCentres(); // ✅ Charge les centress dynamiquement après récupération de l'admin
-        } else {
-          console.warn("⚠️ L’admin connecté n’a pas d’adresse ID !");
-        }
-      },
-      error: (err) => {
-        console.error('❌ Erreur lors de la récupération de l’admin connecté:', err);
-      }
-    });
-  }
-
-  chargerCentres() {
-    if (!this.adminConnecte || !this.adminConnecte.addressId) {
-      console.warn("⚠️ Aucun centre ID disponible pour cet admin !");
-      return;
+    if(localStorage.getItem("role")!="sadmin"){
+      console.log("Accès refusé");
+      window.location.href = '/login';
     }
+    this.onconnect(); // 🔹 Récupère l’admin connecté avant de charger les centres
+  }
 
-    const url = `${this.apiUrl}${this.adminConnecte.addressId}/centers`;
-    
-    const headers = {
-      'Authorization': localStorage.getItem("authToken") || "", // 🔐 Ajoute le token
-      'Content-Type': 'application/json'
-    };
-
-    this.http.get<any[]>(url, { headers }).subscribe({
-      next: (data) => {
-        this.centers = data;
-        console.log("✅ Centress chargés :", data);
-      },
-      error: (err) => {
-        console.error('❌ Erreur lors du chargement des centres:', err);
-      }
+  onconnect() {
+    this.http.get<any>("/api/public/centers").subscribe(data=>{
+      this.centers=data;
     });
   }
+
+  
 
   supprimerCentre(center: any) {
-    if (!confirm(`Voulez-vous vraiment supprimer ${center.name} ?`)) {
-      return; // Annuler si l'utilisateur ne confirme pas
-    }
-
-    const url = `http://localhost:8080/api/admin/center/${center.id}`;
-    const headers = {
-      'Authorization': localStorage.getItem("authToken") || "", // 🔹 Ajoute le token
-      'Content-Type': 'application/json'
-    };
-
-    this.http.delete(url, { headers }).subscribe({
-      next: () => {
-        this.centers = this.centers.filter(m => m.id !== center.id);
-        console.log(`✅ Centre ${center.name} supprimé`);
+    this.http.delete(`/api/admin/center/${center.id}`).subscribe({
+      next: (data) => {
+        console.log("✅ Centre supprimé :", data);
+        this.onconnect();
       },
       error: (err) => {
-        console.error('❌ Erreur lors de la suppression du centre:', err);
+        console.error("⚠️ Erreur lors de la suppression du centre :", err);
       }
     });
   }

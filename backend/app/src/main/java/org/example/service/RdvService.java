@@ -3,6 +3,7 @@ package org.example.service;
 import java.util.Date;
 import java.util.List;
 
+import org.example.exception.CenterNotFoundException;
 import org.example.exception.PatientNotFoundException;
 import org.example.exception.RdvNotFoundException;
 import org.example.repository.PatientRepository;
@@ -37,6 +38,8 @@ public class RdvService {
             .orElseThrow(RdvNotFoundException::new);
     }
 
+
+
     public void create(Rdv p){
         rdvRepository.save(p);
     }
@@ -50,6 +53,15 @@ public class RdvService {
 
     public Patient findPatientById(Integer id) throws PatientNotFoundException {
     return patientService.findOne(id);
-}
+    }
+
+
+    @Autowired
+    private CenterService centerService; // Injecter le service center
+
+    public List<Rdv> findbycenter(Integer id) throws CenterNotFoundException{
+        Center center = centerService.findOne(id);
+        return rdvRepository.findByCenter(center);
+    }
 
 }

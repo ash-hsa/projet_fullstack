@@ -57,9 +57,9 @@ public class App implements CommandLineRunner {
 
     }
 
-    private User createUser(Integer id, String name, String password, boolean isDoctor, boolean isSAdmin, boolean isAdmin, Integer addressId, String tel,String mail) {
+    private User createUser(String name, String password, boolean isDoctor, boolean isSAdmin, boolean isAdmin, Integer addressId, String tel,String mail) {
         // Create a user
-        User user = new User(id, name, password, isDoctor, isSAdmin, isAdmin, addressId,tel,mail);
+        User user = new User(name, password, isDoctor, isSAdmin, isAdmin, addressId,tel,mail);
         userRepository.save(user);
         return user;
     }
@@ -106,17 +106,17 @@ public class App implements CommandLineRunner {
 
 
         // 🔹 Création d'admins et doctors
-        User Sadmin = createUser(1, "Sadmin", "Sadmin", false, true, true, 1,"Sadmin@mail.com", "0000000000");
-        User admin = createUser(2, "Admin", "admin", false, false, true, 1,"admin@mail.com", "0600000000");
-        User user = createUser(3, "User", "user", false, false, false, 1,"user@mail.com","0100000000");
-        User Doctor = createUser(4, "Doctor", "doctor", true, false, false, 1,"doctor@mail.com","0200000000");
-        User Patient = createUser(5, "Patient", "patient", false, false, false, 1,"Patient@mail.com","0300000000");
-        User admin2 = createUser(6, "Admin2", "admin2", false, false, true, 1,"ADmin2@mail.com", "0400000000");
-        User Doctor2 = createUser(7, "Doctor2", "doctor2", true, false, false, 1,"doctor2@mail.com","0500000000");
+        User Sadmin = createUser( "Sadmin", "Sadmin", false, true, true, 1,"Sadmin@mail.com", "0000000000");
+        User admin = createUser("Admin", "admin", false, false, true, 1,"admin@mail.com", "0600000000");
+        User user = createUser("User", "user", false, false, false, 1,"user@mail.com","0100000000");
+        User Doctor = createUser("Doctor", "doctor", true, false, false, 1,"doctor@mail.com","0200000000");
+        User Patient = createUser("Patient", "patient", false, false, false, 1,"Patient@mail.com","0300000000");
+        User admin2 = createUser("Admin2", "admin2", false, false, true, 2,"ADmin2@mail.com", "0400000000");
+        User Doctor2 = createUser("Doctor2", "doctor2", true, false, false, 1,"doctor2@mail.com","0500000000");
         // 🔹 Création du Centre avec admins et docteurs
         Center center = createCenter("Centre Paix", address0, List.of(admin), List.of(Doctor));
         createCenter("Centre Elysées", address1, List.of(admin2), List.of(Doctor2));
-        // createCenter("Centre Haussmann", address2, List.of(admin), List.of(Doctor));
+        createCenter("Centre Haussmann", address2, List.of(admin), List.of(Doctor));
 
         // 🔹 Création de patients
         Patient patient = createPatient(1, "Patient", new Date(), false, address5);

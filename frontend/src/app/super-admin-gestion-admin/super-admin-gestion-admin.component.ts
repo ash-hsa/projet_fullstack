@@ -25,62 +25,28 @@ import { RouterModule } from '@angular/router';
 
 export class SuperAdminGestionAdminComponent implements OnInit {
   apiUrl = 'http://localhost:8080/';
-  adminConnecte: any = null; // ✅ Dynamique
   admins: any[] = []; 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getAdminConnecte(); // 🔹 Récupère l’admin connecté avant de charger les centres
-  }
-
-  getAdminConnecte() {
-    const url = 'http://localhost:8080/api/me'; // 🔹 Endpoint pour récupérer l'utilisateur connecté
-
-    const headers = {
-      'Authorization': localStorage.getItem("authToken") || "", // 🔐 Ajoute le token
-      'Content-Type': 'application/json'
-    };
-
-    this.http.get<any>(url, { headers }).subscribe({
-      next: (user) => {
-        this.adminConnecte = user;
-        console.log("✅ Admin connecté :", user);
-        
-        if (this.adminConnecte.addressId) {
-          this.chargerCentres(); // ✅ Charge les centress dynamiquement après récupération de l'admin
-        } else {
-          console.warn("⚠️ L’admin connecté n’a pas d’adresse ID !");
-        }
-      },
-      error: (err) => {
-        console.error('❌ Erreur lors de la récupération de l’admin connecté:', err);
-      }
-    });
-  }
-
-  chargerCentres() {
-    if (!this.adminConnecte || !this.adminConnecte.addressId) {
-      console.warn("⚠️ Aucun centre ID disponible pour cet admin !");
-      return;
+    if(localStorage.getItem("role")!="sadmin"){
+      console.log("Accès refusé");
+      window.location.href = '/login';
     }
 
-    const url = `${this.apiUrl}${this.adminConnecte.addressId}/admins`;
-    
-    const headers = {
-      'Authorization': localStorage.getItem("authToken") || "", // 🔐 Ajoute le token
-      'Content-Type': 'application/json'
-    };
-
-    this.http.get<any[]>(url, { headers }).subscribe({
-      next: (data) => {
-        this.admins = data;
-        console.log("✅ Centress chargés :", data);
-      },
-      error: (err) => {
-        console.error('❌ Erreur lors du chargement des centres:', err);
+    this.http.get<any>("/api/admin/users").subscribe(data=>{
+      console.log(data)
+      for(let i=0; i<data.length; i++){
+        if(data[i].admin){
+          this.admins.push(data[i]);
+        }
+        
       }
-    });
+    }
+    );
+
+    
   }
 
   supprimerCentre(admin: any) {

@@ -4,22 +4,17 @@
 <form (ngSubmit)="modifierProfil()">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input matInput [(ngModel)]="patient.nom" name="nom" required>
-  </mat-form-field>
-
-   <mat-form-field appearance="fill">
-    <mat-label>Prénom</mat-label>
-    <input matInput [(ngModel)]="patient.prenom" name="prenom" required>
+    <input matInput [(ngModel)]="user.name" name="nom" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="patient.email" name="email" type="email" required>
+    <input matInput [(ngModel)]="user.mail" name="email" type="email" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Téléphone</mat-label>
-    <input matInput [(ngModel)]="patient.telephone" name="telephone" type="tel" required>
+    <input matInput [(ngModel)]="user.tel" name="telephone" type="tel" required>
   </mat-form-field>
 
   <!-- Boutons -->

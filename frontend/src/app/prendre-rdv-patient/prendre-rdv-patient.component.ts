@@ -67,16 +67,34 @@ export class PrendreRdvPatientComponent implements OnInit {
         alert('Veuillez remplir tous les champs ❌');
         return;
       }
-      if(data.length == 1) {
+      if(data.length >= 1) {
         this.patientId = data[0].id;
+      }else{
+        this.http.post<any>(`http://localhost:8080/api/public/patients`, {
+          name: localStorage.getItem("name"),
+          birthdate: this.formatDateToBackend(new Date("2000-01-01"), "00:00"),
+          is_vaccinated : false,
+          address_id: null,
+        }).subscribe(data => {
+          console.log("Patient créé :", data); // ✅ Vérifier les données reçues
+          this.http.get<any[]>(`http://localhost:8080/api/public/patients?name=${localStorage.getItem("name")}`).subscribe(data => {
+            console.log("Patient récupéré :", data); // ✅ Vérifier les données reçues
+          });
+          this.patientId = data.id;
+        }
+        );
       }
       this.http.get<any[]>(`http://localhost:8080/api/public/center/${this.selectedCentre.id +1}/doctors`).subscribe(data => {
         if (!this.selectedCentre || !this.selectedDate || !this.selectedHeure) {
           alert('Veuillez remplir tous les champs ❌');
           return;
         }
-        if(data.length == 1) {
+        if(data.length >= 1) {
           this.doctorID = data[0].id;
+        }else{
+          console.error("❌ Erreur API : Impossible de récupérer l'ID du docteur");
+          console.log(data)
+          return;
         }
         console.log("Doctor ID :", this.doctorID);// ✅ Vérifier les données reçues
 

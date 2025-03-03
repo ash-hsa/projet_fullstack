@@ -19,7 +19,7 @@ import { LoginService } from '../service/login.service';
 })
 export class AdminReservationsComponent {
   rendezVous = [
-    { patient: '', date: '2021-06-01' },
+    { id: -1,patient: '', date: '2021-06-01' },
   ];
 
 
@@ -41,14 +41,13 @@ export class AdminReservationsComponent {
       addressId = data.addressId;
       if(addressId == -1){
         console.error('Erreur lors de la récupération de l’admin connecté :');
-        //alert('Vous devez être connecté pour accéder à cette page !');
-        //window.location.href = '/login';
-        //return;
+        alert('Vous devez être connecté pour accéder à cette page !');
+        window.location.href = '/login';
+        return;
       }
       this.http.get(`http://localhost:8080/api/public/timeslots/center/${addressId}`).subscribe((data: any) => {
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
-          this.rendezVous.push({ patient: data[i].patient.name, date: data[i].date });
+          this.rendezVous.push({ id: data[i].id, patient: data[i].patient.name, date: data[i].date });
         }
         this.rendezVous.shift();
       });
@@ -60,6 +59,20 @@ export class AdminReservationsComponent {
   }
 
   annulerRendezVous(rdv: any) {
-    this.rendezVous = this.rendezVous.filter(r => r !== rdv);
+    const options = {
+      headers: {
+        'Authorization': this.loginservice.getBasicAuthHeaderValue()
+      }
+    };
+    this.http.delete(`http://localhost:8080/api/public/timeslots/${rdv.id}`, options).subscribe(
+      response => {
+        console.log('Rendez-vous annulé avec succès');
+        this.rendezVous = this.rendezVous.filter(r => r !== rdv);
+      },
+      error => {
+        console.error('Erreur lors de l\'annulation du rendez-vous', error);
+      }
+    );
   }
+  
 }

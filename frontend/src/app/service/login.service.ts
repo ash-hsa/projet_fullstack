@@ -66,7 +66,7 @@ export class LoginService {
       localStorage.setItem('name', res["name"]);
       localStorage.setItem('tel', res["tel"]);
       localStorage.setItem('mail', res["mail"]);
-      return res;
+      return me;
     }));
   }
 

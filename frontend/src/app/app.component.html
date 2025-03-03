@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" >
     <span>{{ title }}</span>
     <span class="spacer"></span> <!-- Pousse les boutons à droite -->
+    <button class="tool-button" routerLink="/modifier-profil-patient">
+        modifier mon profil
+    </button>
     <button mat-raised-button color="primary" class="tool-button" (click)="to_accueil()">
         Accueil
     </button>

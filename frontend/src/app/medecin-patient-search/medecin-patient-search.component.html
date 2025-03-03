@@ -1,16 +1,20 @@
 <h2 class="title">Recherche d'un patient</h2>
 
 <!-- Barre de recherche -->
+
+
+
 <div class="search-container">
   <mat-form-field appearance="fill" class="search-field">
     <mat-label>Nom du patient</mat-label>
-    <input matInput placeholder="Entrez un nom...">
+    <input matInput placeholder="Entrez un nom..." [(ngModel)]="username">
+    
   </mat-form-field>
 </div>
 
 <!-- Bouton "Vaccin effectué" -->
 <div class="button-container">
-  <button mat-raised-button color="primary" class="vaccination-button">
+  <button mat-raised-button color="primary" class="vaccination-button" (click)="post()">
     Vaccin effectué
   </button>
 </div>

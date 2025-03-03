@@ -55,5 +55,9 @@ public class Patient {
         this.birthDate = birthDate;
     }
 
+    public boolean isVaccinated() {return is_vaccinated;}
+
+    public void setVaccinated(boolean is_vaccinated) {this.is_vaccinated = is_vaccinated;}
+
     
 }

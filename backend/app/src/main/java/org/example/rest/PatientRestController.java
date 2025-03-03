@@ -41,6 +41,15 @@ public class PatientRestController {
         return ResponseEntity.created(new URI("patient/"+p.getId())).build();
     }
 
+
+    @PostMapping(path = "/api/public/patients/{id}/vaccinate")
+    public ResponseEntity<Patient> vaccinate(@PathVariable("id") Integer id) throws PatientNotFoundException{
+        Patient p = service.findOne(id);
+        p.setVaccinated(true);
+        service.create(p);
+        return ResponseEntity.ok(p);
+    }
+
     @DeleteMapping(path = "/api/public/patient/{id}")
     public void delete(@PathVariable("id") Integer id){
         service.removeOne(id);
